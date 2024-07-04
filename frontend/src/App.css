@@ -1,0 +1,12 @@
+.App {
+
+  height: 100%;
+  width: 100%;
+  position: relative;
+  
+}
+
+.mainItemStartsFromHere {
+  padding-top: 75px;
+  background-color: #2C3639; /* Adjust this value based on the height of your navbar */
+}

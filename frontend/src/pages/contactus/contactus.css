@@ -1,0 +1,86 @@
+
+
+#title-Tag-Line {
+    font-size: 20px;
+  }
+  
+  .form {
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(90, 116, 148, 0.2);
+    border-radius: 5px;
+    max-width: 480px;
+    margin: 50px auto;
+    padding: 20px;
+    border-top: 5px solid #0e3721;
+    z-index: 0; /* Lowering the z-index */
+  }
+  
+  ::-webkit-input-placeholder {
+    font-size: 1.3em;
+  }
+  
+  .title {
+    display: block;
+    font-family: sans-serif;
+    margin: 10px auto 5px;
+    width: 300px;
+  }
+  
+  .termsConditions {
+    margin: 0 auto 5px 80px;
+  }
+  
+  .pageTitle {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .secondaryTitle {
+    color: grey;
+  }
+  
+  .name,
+  .email,
+  .message {
+    background-color: #ebebeb;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .name:focus,
+  .email:focus,
+  .message:focus {
+    border-bottom-color: #0e3721;
+  }
+  
+  .formEntry {
+    display: block;
+    margin: 30px auto;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 2px;
+    transition: all 0.5s ease 0s;
+  }
+  
+  .submit {
+    width: 200px;
+    color: white;
+    background-color: #0e3721;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media screen and (max-width: 500px) {
+    .form {
+      width: 90%;
+    }
+  }
+  

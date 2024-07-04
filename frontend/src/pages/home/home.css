@@ -1,0 +1,331 @@
+
+
+
+.homeMainContainer {
+  margin-top: 90px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .homeMainContainerLeft {
+    flex: 1;
+    padding: 80px;
+    color: white;
+   
+  }
+ 
+
+  .homeMainContainerLeft p{
+    color: white;
+    font-size: 1.2rem; 
+     line-height: 1.5; 
+      
+  }
+  
+  .homeMainContainerRight {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .homeMainContainerRight img {
+    max-width: 100%;
+    height: auto;
+    width: 300px; 
+    border-radius: 15px
+  }
+   
+
+
+
+
+
+
+
+
+
+  .homeSecondContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:  90px;
+  }
+  
+  .homeSecondContainerLeft,
+  .homeSecondContainerMiddle,
+  .homeSecondContainerRight {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 10px; /* Add margin to create space between each container */
+  }
+  
+  .homeSecondContainerLeft {
+    background-color: #dccfc788;
+  }
+  
+  .homeSecondContainerMiddle {
+    background-color: #874f4183; /* Blue background color */
+  }
+  
+  .homeSecondContainerRight {
+    background-color: #ff562269; /* Orange background color */
+  }
+  
+  .homeSecondContainer h3 {
+    font-size: 1.2rem; /* Reduce font size for headings */
+    margin-bottom: 15px; /* Increase margin for better spacing */
+    color: #ffffff; /* White text color */
+    text-transform: uppercase; /* Convert text to uppercase for a stylish look */
+  }
+  
+  .homeSecondContainer p {
+    font-size: 1rem; /* Reduce font size for paragraphs */
+    line-height: 1.5;
+    color: #ffffff; /* White text color */
+  }
+  
+  .homeSecondContainer img {
+    width: 80px; /* Reduce image size */
+    height: 80px; /* Reduce image size */
+    border-radius: 50%; /* Make the images circular */
+    margin-bottom: 15px; /* Increase margin for better spacing */
+  }
+  
+  
+  
+/*Div for third */
+
+.HomeScreenThirdContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-left: 99px;
+  max-width: 900px;
+  margin: 90px auto;
+}
+  
+  .HomeScreenThirdContainerHeading {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .HomeScreenThirdContainerHeading h1 {
+    font-size: 2rem;
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  
+  .HomeScreenThirdContainerMiddle {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Increased gap for better spacing */
+    margin-top: 10px;
+  }
+  
+  .HomeScreenThirdContainerMiddle img {
+    width: 100%;
+    max-width: 250px; /* Increased max-width for larger images */
+    height: auto;
+    border-radius: 10px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .HomeScreenThirdContainerMiddle img:hover {
+    transform: scale(1.05);
+  }
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*Media Query starts here */
+  @media screen and (max-width: 850px) {
+    .homeMainContainer {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .homeMainContainerLeft {
+      padding: 40px;
+      text-align: center;
+    }
+  
+    .homeMainContainerRight {
+      padding: 10px;
+    }
+  
+    .homeMainContainerRight img {
+      width: 80%;
+    }
+    .homeSecondContainer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    
+      .homeSecondContainerLeft,
+      .homeSecondContainerMiddle,
+      .homeSecondContainerRight {
+        margin: 10px 0;
+      }
+
+
+
+
+/* Third DIv*/
+      .HomeScreenThirdContainer {
+        padding: 15px;
+        max-width: 90%;
+      }
+      
+      .HomeScreenThirdContainerHeading h1 {
+        font-size: 1.5rem;
+      }
+    
+      .HomeScreenThirdContainerMiddle {
+        flex-direction: column;
+        gap: 10px;
+      }
+    
+      .HomeScreenThirdContainerMiddle img {
+        max-width: 90%;
+      }
+  }

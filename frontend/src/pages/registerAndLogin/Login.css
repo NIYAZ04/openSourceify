@@ -1,0 +1,122 @@
+/* Login.css */
+
+.login-container {
+    width: 100%;
+    max-width: 500px; /* Increased width for larger appearance */
+    margin: 100px auto;
+    padding: 40px; /* Increased padding for more spacious feel */
+    background-color: #ffffff; /* White background for cleaner look */
+    border-radius: 12px; /* Slightly larger border radius for smoother edges */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Enhanced box shadow for depth */
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    font-size: 2.5rem; /* Larger font size for heading */
+    margin-bottom: 30px; /* Increased margin for better spacing */
+    color: #333333; /* Darkened text color for readability */
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Increased margin between form groups */
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555555; /* Slightly lighter text color for labels */
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Increased padding for inputs */
+    font-size: 1.1rem; /* Slightly larger font size */
+    border: 1px solid #dddddd; /* Lighter border color */
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 12px 24px; /* Increased padding for buttons */
+    font-size: 1.1rem; /* Slightly larger font size */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .forgot-password-btn-in-Login-Form-99 {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    font-size: 1rem; /* Slightly larger font size */
+    margin-bottom: 12px; /* Increased margin */
+    cursor: pointer;
+  }
+  
+  .signup-link {
+    margin-top: 24px; /* Increased margin top */
+    font-size: 1rem; /* Slightly larger font size */
+    color: #888888; /* Lighter text color */
+  }
+  
+  .signup-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px; /* Increased padding */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Media Query for screens with max width of 850px */
+  @media (max-width: 850px) {
+    .login-container {
+      max-width: 80%; /* Adjusted max width for smaller screens */
+      margin: 50px auto; /* Reduced margin */
+      padding: 30px; /* Reduced padding */
+    }
+  
+    .login-container h1 {
+      font-size: 2rem; /* Adjusted font size */
+      margin-bottom: 20px; /* Reduced margin */
+    }
+  
+    input[type="email"],
+    input[type="password"] {
+      padding: 12px; /* Reduced padding for inputs */
+      font-size: 1rem; /* Reduced font size */
+    }
+  
+    .signup-link {
+      margin-top: 20px; /* Reduced margin top */
+      font-size: 0.9rem; /* Reduced font size */
+    }
+  
+    .signup-btn {
+   
+        padding: 4px 9px;
+        font-size: 0.9rem;
+    
+    }
+  }

@@ -1,0 +1,92 @@
+.ProjectSectionFirstContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 50vh;
+  }
+  
+  .ProjectSectionFirstItems {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    width: 100vh;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .radio-inputs-selection-choice {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #eee;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 90vh;
+    height: 6vh;
+    font-size: 14px;
+  }
+  
+  .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio input {
+    display: none;
+  }
+  
+  .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio input:checked + .name {
+    background-color: #00ff3380;
+    font-weight: 600;
+  }
+
+.UploadButtonRight {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .buttonForUploadProject {
+
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: large;
+    font-family: inherit;
+    font-weight: bold;
+    color: #0011ff;
+    background-color: #f8f8fd;
+    padding: 0.3em 1.1em;
+    border-radius: 50em;
+    border: 5px solid #8b93f8;
+    box-shadow: 0px 2px #1f35ff;
+  }
+  .buttonForUploadProject:active {
+    position: relative;
+    top: 8px;
+    border: 6px solid #646fff;
+    box-shadow: 0px 0px;
+  }
+  
+
+  @media (max-width: 850px) {
+    .ProjectSectionFirstItems {
+      max-width: 100%; /* Full width for smaller screens */
+    }
+  
+    .radio-inputs-selection-choice {
+      width: 100%; /* Full width for smaller screens */
+    }
+  }
