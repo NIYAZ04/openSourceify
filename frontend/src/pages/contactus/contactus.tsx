@@ -1,81 +1,30 @@
-import React, { useState } from "react";
-import "./contactus.css";
+import React from 'react';
+import './contactus.css';
+
 const ContactUs: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    termsAccepted: false,
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type } = e.target;
-    const newValue =
-      type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: newValue,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert("Thanks for submitting the form!");
-  };
-
   return (
-    <div className="wrapper">
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="pageTitle title">Contact Us</div>
-        <div className="secondaryTitle title">
-          We value your feedback! Feel free to share any suggestions or comments
-          you may have. Your input helps us improve and better serve you. Thank
-          you for taking the time to connect with us!{" "}
+    <div className="ContactUsContainerByOpenSourceify">
+      <h2 className="ContactUsTitleByOpenSourceify">Contact Us</h2>
+      <p className="ContactUsMessageByOpenSourceify">
+        As a developer of the OpenSourceify platform, an open-source platform, I welcome your feedback. If you need any enhancements or are facing any issues, please feel free to contact me.
+      </p>
+      <form className="ContactUsFormByOpenSourceify">
+        <div className="ContactUsFormGroupByOpenSourceify">
+          <label htmlFor="name" className="ContactUsLabelByOpenSourceify">Name</label>
+          <input type="text" id="name" className="ContactUsInputByOpenSourceify" required />
         </div>
-        <input
-          type="text"
-          className="name formEntry"
-          placeholder="Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          className="email formEntry"
-          placeholder="Email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <textarea
-          className="message formEntry"
-          placeholder="Message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-        />
-        <input
-          type="checkbox"
-          className="termsConditions"
-          name="termsAccepted"
-          checked={formData.termsAccepted}
-          onChange={handleChange}
-        />
-        <label style={{ color: "grey" }} htmlFor="terms">
-          I Accept the <span style={{ color: "#0e3721" }}>Terms of Use</span> &{" "}
-          <span style={{ color: "#0e3721" }}>Privacy Policy</span>.
-        </label>
-        <br />
-        <button type="submit" className="submit formEntry">
-          Submit
-        </button>
+        <div className="ContactUsFormGroupByOpenSourceify">
+          <label htmlFor="email" className="ContactUsLabelByOpenSourceify">Email</label>
+          <input type="email" id="email" className="ContactUsInputByOpenSourceify" required />
+        </div>
+        <div className="ContactUsFormGroupByOpenSourceify">
+          <label htmlFor="message" className="ContactUsLabelByOpenSourceify">Message</label>
+          <textarea id="message" className="ContactUsTextareaByOpenSourceify" rows={5} required></textarea>
+        </div>
+        <button type="submit" className="ContactUsButtonByOpenSourceify">Submit</button>
       </form>
     </div>
   );
-};
+}
 
 export default ContactUs;

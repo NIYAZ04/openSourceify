@@ -22,7 +22,9 @@ const ForgotPassword: React.FC = () => {
     sendPasswordReset(email); 
   };
 
-  return (
+  return (<>
+  <div className="For-getPasswordContainerMainOS">
+   
     <div className="forgotPassword-container">
       <div className="welcome-message">Enter your Email</div>
       <form className="forgot-password-form" onSubmit={handleSubmit}>
@@ -63,6 +65,8 @@ const ForgotPassword: React.FC = () => {
         </Link>
       </div>
     </div>
+    </div>
+    </>
   );
 };
 

@@ -29,6 +29,8 @@ const Login: React.FC = () => {
   };
 
   return (
+    <>
+    <div className="thisCanFixErrorContainerForLogin">
     <div className="login-container">
       <h1>Login to your account</h1>
       {/* Display errors */}
@@ -79,6 +81,9 @@ const Login: React.FC = () => {
         </Link>
       </p>
     </div>
+    </div>
+
+    </>
   );
 };
 

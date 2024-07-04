@@ -32,6 +32,8 @@ const Register: React.FC = () => {
   };
 
   return (
+    <>
+    <div className="thisCanFixTheRegisterContainer">
     <div className="register-container">
       <div className="welcome-message">Hello Tech Enthusiast</div>
       {/* Display errors */}
@@ -99,6 +101,8 @@ const Register: React.FC = () => {
         </Link>
       </p>
     </div>
+    </div>
+    </>
   );
 };
 

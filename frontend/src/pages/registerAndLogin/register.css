@@ -1,5 +1,15 @@
+.thisCanFixTheRegisterContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-color: #2C3639;
+}
+
 .register-container {
-    max-width: 400px;
+  max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -79,9 +89,10 @@
   
   @media (max-width: 850px) {
     .register-container {
-      padding: 15px;
-    }
-  
+    max-width: 900%; /* Adjusted width for smaller screens */
+    padding: 15px;
+  }
+
     .welcome-message {
       font-size: 16px;
     }
