@@ -6,7 +6,6 @@ import { register } from "../../lib/api";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
-
   const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

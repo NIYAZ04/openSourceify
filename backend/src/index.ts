@@ -9,6 +9,7 @@ import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
 import sessionRoutes from "./routes/session.route";
 import { APP_ORIGIN, NODE_ENV, PORT } from "./constants/env";
+import projectRoutes from "./routes/project.route";
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use("/auth", authRoutes);
 app.use("/user", authenticate, userRoutes);
 app.use("/sessions", authenticate, sessionRoutes);
 
+app.use("/projects", projectRoutes);
 // error handler
 app.use(errorHandler);
 
