@@ -12,6 +12,7 @@ type CreateProjectParams = {
   languages: string;
   description: string;
   maintainers: string[];
+  userId: string; // Add userId
 };
 
 export const createProject = async (data: CreateProjectParams): Promise<ProjectDocument> => {
@@ -21,5 +22,9 @@ export const createProject = async (data: CreateProjectParams): Promise<ProjectD
 
 export const getAllProjects = async (): Promise<ProjectDocument[]> => {
   const projects = await ProjectModel.find();
+  return projects;
+};
+export const getProjectsByUser = async (userId: string): Promise<ProjectDocument[]> => {
+  const projects = await ProjectModel.find({ userId });
   return projects;
 };

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { UserDocument } from "./user.model";
 
 export interface ProjectDocument extends mongoose.Document {
   name: string;
@@ -9,6 +10,8 @@ export interface ProjectDocument extends mongoose.Document {
   languages: string;
   description: string;
   maintainers: string[];
+  // getting user ID for displaying users to their projects
+  userId:mongoose.Schema.Types.ObjectId | UserDocument;
   createdAt: Date;
   updatedAt: Date; 
 }
@@ -23,6 +26,7 @@ const projectSchema = new mongoose.Schema<ProjectDocument>(
     languages: { type: String, required: true, maxlength: 100 },
     description: { type: String, required: true, maxlength: 500 },
     maintainers: [{ type: String, required: true }],
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   },
   {
     timestamps: true,

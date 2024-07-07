@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { navlinks } from './navlinks';
 import './navbar.css';
 
-function Navbar() {
+const Navbar: React.FC = () => {
     const [clicked, setClicked] = useState(false);
 
     const handleClick = () => {

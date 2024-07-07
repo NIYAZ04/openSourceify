@@ -8,8 +8,7 @@ interface UploadFormProps {
 const UploadForm: React.FC<UploadFormProps> = ({ onClose }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle form submission logic here (e.g., API call, validation, etc.)
-    // You can access form data using event.target elements
+    
   };
 
   return (

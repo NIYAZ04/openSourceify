@@ -15,7 +15,7 @@ import AppContainer from './components/AppContainer'
 import Settings from './pages/registerAndLogin/Setting'
 import Profile from './pages/userProfile/Profile'
 import { setNavigate } from './lib/navigation';
-function App() {
+function App(){
   const navigate=useNavigate();
   setNavigate(navigate)
   return (

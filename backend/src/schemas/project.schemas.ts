@@ -11,4 +11,5 @@ export const projectSchema = z.object({
   languages: z.string().min(1).max(100),
   description: z.string().min(1).max(500),
   maintainers: z.array(z.string().min(1)),
+  userId: z.string(), 
 });
