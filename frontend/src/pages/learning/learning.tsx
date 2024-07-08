@@ -1,74 +1,53 @@
 import React, { useState } from 'react';
 import './learning.css';
+import HTMLComponent from './languages/html';
+import CPPComponent from './languages/cpp';
+import JavaScriptComponent from './languages/javaScript';
+import PostgreSQL from './languages/postgreSql';
 
 const Learning: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>('option1');
+  const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
 
+  const renderSelectedComponent = () => {
+    switch (selectedOption) {
+      case 'HTML':
+        return <HTMLComponent />;
+      case 'C++':
+        return <CPPComponent />;
+      case 'JavaScript':
+        return <JavaScriptComponent />;
+      case 'PostgreSql':
+        return <PostgreSQL />;
+      default:
+        return <div className="default-message">Select what you want to learn</div>;
+    }
+  };
+
   return (
     <div className="learning-container">
-      <div className="wrapper">
-        <div className="option">
-          <input 
-            className="input" 
-            type="radio" 
-            name="btn" 
-            value="option1" 
-            checked={selectedOption === 'option1'} 
-            onChange={handleOptionChange} 
-          />
-          <div className="btn">
-            <span className="span">HTML</span>
-          </div>
-        </div>
-        <div className="option">
-          <input 
-            className="input" 
-            type="radio" 
-            name="btn" 
-            value="option2" 
-            checked={selectedOption === 'option2'} 
-            onChange={handleOptionChange} 
-          />
-          <div className="btn">
-            <span className="span">C++</span>
-          </div>
-        </div>
-        <div className="option">
-          <input 
-            className="input" 
-            type="radio" 
-            name="btn" 
-            value="option3" 
-            checked={selectedOption === 'option3'} 
-            onChange={handleOptionChange} 
-          />
-          <div className="btn">
-            <span className="span">Python</span>
-          </div>
-        </div>
-        <div className="option">
-          <input 
-            className="input" 
-            type="radio" 
-            name="btn" 
-            value="option4" 
-            checked={selectedOption === 'option4'} 
-            onChange={handleOptionChange} 
-          />
-          <div className="btn">
-            <span className="span">JavaScript</span>
-          </div>
-        </div>
-
-
-
-
-
-       
+      <div className="options-wrapper">
+        {['HTML', 'C++', 'JavaScript', 'PostgreSql'].map(option => (
+          <label className="option" key={option}>
+            <input 
+              className="input" 
+              type="radio" 
+              name="btn" 
+              value={option} 
+              checked={selectedOption === option} 
+              onChange={handleOptionChange} 
+            />
+            <div className="btn">
+              <span className="span">{option}</span>
+            </div>
+          </label>
+        ))}
+      </div>
+      <div className="content-wrapper">
+        {renderSelectedComponent()}
       </div>
     </div>
   );

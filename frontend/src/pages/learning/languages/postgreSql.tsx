@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const typeScript: React.FC = () => {
+const postgreSql: React.FC = () => {
  
 
   return (
@@ -11,4 +11,4 @@ const typeScript: React.FC = () => {
   );
 };
 
-export default typeScript;
+export default postgreSql;
