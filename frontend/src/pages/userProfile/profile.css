@@ -1,0 +1,67 @@
+.Profile-center-sourceify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Profile-margin-top-16-sourceify {
+  margin-top: 16px;
+}
+
+.Profile-flex-column-sourceify {
+  flex-direction: column;
+}
+
+.Profile-heading-sourceify {
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: white;
+}
+
+.Profile-alert-sourceify {
+  width: fit-content;
+  padding: 8px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: #856404;
+  display: flex;
+  align-items: center;
+}
+
+.Profile-alert-icon-sourceify {
+  margin-right: 8px;
+}
+
+.Profile-text-sourceify {
+  margin-bottom: 8px;
+  color: white;
+}
+
+.Profile-text-span-sourceify {
+  color: gray;
+}
+
+/* Ensure ProfileProjects container is responsive */
+.Profile-projects-container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Media Query for screens with max-width 850px */
+@media (max-width: 850px) {
+  .Profile-center-sourceify {
+      padding: 10px;
+      text-align: center;
+  }
+
+  .Profile-heading-sourceify {
+      font-size: 20px;
+  }
+
+  .Profile-text-sourceify {
+      font-size: 14px;
+  }
+}

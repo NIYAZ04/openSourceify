@@ -1,5 +1,16 @@
 import API from "../config/apiClient";
+import axios from "axios";
 
+
+export const getUserForProfileProject = async () => {
+  try {
+    const response = await API.get("/user");
+    return response; 
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw error;
+  }
+};
 
 interface LoginData {
   email: string;
@@ -43,3 +54,26 @@ export const verifyEmail = async (verificationCode: string) => {
  export const getUser = async ()=>API.get("/user")
  export const getSessions = async () => API.get("/sessions");
  export const deleteSession = async (id: string) => API.delete(`/sessions/${id}`);
+
+ // Creatign api for the projects ||   There are 3 end points 
+// one is to get data from / porjects (GET )
+// one is for Get users project user can get their porjects 
+// one is a (POST ) for posting the projects to the webstie
+
+interface ProjectData {
+  name: string;
+  link: string;
+  willPay: boolean;
+  license: string;
+  domain: string;
+  languages: string;
+  description: string;
+  maintainers: string[];
+}
+
+export const getProjectsByDomain = async (domain: string) => API.get(`/projects/domain/${domain}`);
+export const createProject = async (data: ProjectData) => API.post("/projects", data);
+
+
+export const getProjectsByUser = async (userId: string) => 
+  API.get(`/projects/user/${userId}`);

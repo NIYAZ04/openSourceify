@@ -1,0 +1,96 @@
+.ProfileProjects-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ProfileProjects-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.ProfileProjects-noProjects {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+}
+
+.ProfileProjects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ProfileProjects-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ProfileProjects-projectName {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #007bff;
+}
+
+.ProfileProjects-projectDescription {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #555;
+  white-space: normal; /* Ensures text wraps to the next line */
+  overflow-wrap: break-word; /* Breaks long words if necessary */
+}
+
+.ProfileProjects-projectLink {
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.ProfileProjects-projectLink:hover {
+  text-decoration: underline;
+}
+
+.ProfileProjects-projectDetails {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+@media (max-width: 850px) {
+  .ProfileProjects-container {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .ProfileProjects-heading {
+    font-size: 1.5rem; /* Reduce heading size */
+  }
+
+  .ProfileProjects-item {
+    padding: 10px; /* Reduce padding inside project items */
+  }
+
+  .ProfileProjects-projectName {
+    font-size: 1.25rem; /* Reduce project name size */
+  }
+
+  .ProfileProjects-projectDescription {
+    font-size: 0.9rem; /* Reduce description font size */
+  }
+
+  .ProfileProjects-projectLink {
+    font-size: 0.9rem; /* Reduce font size of links */
+  }
+
+  .ProfileProjects-projectDetails {
+    font-size: 0.8rem; /* Reduce details font size */
+  }
+}

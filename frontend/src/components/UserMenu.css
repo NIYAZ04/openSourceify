@@ -1,74 +1,67 @@
 .menu-container {
-    position: absolute;
-    left: 1.5rem;
-    bottom: 1.5rem;
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1.5rem;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.menu-list {
+  position: absolute;
+  left: 0;
+  top: -150%;
+  background: #05ce3b8f;
+  border: 1px solid hsla(0, 0%, 100%, 0.829);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.menu-item {
+  display: block;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background: #000000;
+}
+
+/* Media Queries for max width 850px */
+@media (max-width: 850px) {
+  .menu-container {
+    left: 1rem;
+    bottom: 1rem;
   }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-  }
-  
+
   .avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
   }
-  
+
   .menu-list {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: -150%;
-    background: #05ce3b8f;
-    border: 1px solid hsla(0, 0%, 100%, 0.829);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    top: -120%;
   }
-  
-  .menu-container:hover .menu-list {
-    display: block;
-  }
-  
+
   .menu-item {
-    display: block;
-    padding: 10px 20px;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    transition: background 0.2s;
+    padding: 8px 16px;
   }
-  
-  .menu-item:hover {
-    background: #000000;
-  }
-  
-  /* Media Queries for max width 850px */
-  @media (max-width: 850px) {
-    .menu-container {
-      left: 1rem;
-      bottom: 1rem;
-    }
-  
-    .avatar {
-      width: 50px;
-      height: 50px;
-    }
-  
-    .menu-list {
-      top: -120%;
-    }
-  
-    .menu-item {
-      padding: 8px 16px;
-    }
-  }
-  
+}

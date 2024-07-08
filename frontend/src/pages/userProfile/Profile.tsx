@@ -1,43 +1,49 @@
-import { Alert, AlertIcon, Center, Heading, Text } from "@chakra-ui/react";
-import useAuth from "../../hooks/useAuth";
 
+import useAuth from '../../hooks/useAuth';
+import './profile.css';
+import ProfileProjects from './profileProject';
 const Profile = () => {
   const { user } = useAuth();
-  
+
   if (!user) {
-    return <Center mt={16}><Text>Loading...</Text></Center>;
+    return <div className="Profile-center-sourceify Profile-margin-top-16-sourceify">Loading...</div>;
   }
 
   const { userName, email, verified, createdAt } = user;
 
   return (
-    <Center mt={16} flexDir="column">
-      <Heading mb={4}>My Account</Heading>
+    <div className="Profile-center-sourceify Profile-margin-top-16-sourceify Profile-flex-column-sourceify">
+      <h2 className="Profile-heading-sourceify">My Account</h2>
       {!verified && (
-        <Alert status="warning" w="fit-content" borderRadius={12} mb={3}>
-          <AlertIcon />
+        <div className="Profile-alert-sourceify">
+          <span className="Profile-alert-icon-sourceify">⚠️</span>
           Please verify your email
-        </Alert>
+        </div>
       )}
-      <Text color="white" mb={2}>
+      <p className="Profile-text-sourceify">
         UserName:{" "}
-        <Text as="span" color="gray.300">
+        <span className="Profile-text-span-sourceify">
           {userName}
-        </Text>
-      </Text>
-      <Text color="white" mb={2}>
+        </span>
+      </p>
+      <p className="Profile-text-sourceify">
         Email:{" "}
-        <Text as="span" color="gray.300">
+        <span className="Profile-text-span-sourceify">
           {email}
-        </Text>
-      </Text>
-      <Text color="white">
+        </span>
+      </p>
+      <p className="Profile-text-sourceify">
         Created on{" "}
-        <Text as="span" color="gray.300">
+        <span className="Profile-text-span-sourceify">
           {new Date(createdAt).toLocaleDateString("en-US")}
-        </Text>
-      </Text>
-    </Center>
+        </span>
+      </p>
+
+      <div className="Profile-projects-container">
+        <ProfileProjects />
+      </div>
+    </div>
+    
   );
 };
 

@@ -1,7 +1,7 @@
 // src/controllers/project.controller.ts
 
 import { Request, Response } from "express";
-import { createProject, getAllProjects,getProjectsByUser } from "../services/project.service";
+import { createProject, getProjectsByDomain,getProjectsByUser } from "../services/project.service";
 import catchErrors from "../utils/catchErrors";
 import { CREATED, OK } from "../constants/http";
 import { projectSchema } from "../schemas/project.schemas";
@@ -18,8 +18,8 @@ export const createProjectHandler = catchErrors(async (req: Request, res: Respon
 
 
 export const getProjectsHandler = catchErrors(async (req: Request, res: Response) => {
-  const projects = await getAllProjects();
-
+  const domain = req.params.domain; // Get domain from URL params
+  const projects = await getProjectsByDomain(domain);
   return res.status(OK).json(projects);
 });
 

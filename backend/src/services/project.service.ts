@@ -20,10 +20,11 @@ export const createProject = async (data: CreateProjectParams): Promise<ProjectD
   return project;
 };
 
-export const getAllProjects = async (): Promise<ProjectDocument[]> => {
-  const projects = await ProjectModel.find();
+export const getProjectsByDomain = async (domain: string): Promise<ProjectDocument[]> => {
+  const projects = await ProjectModel.find({ domain });
   return projects;
 };
+
 export const getProjectsByUser = async (userId: string): Promise<ProjectDocument[]> => {
   const projects = await ProjectModel.find({ userId });
   return projects;
