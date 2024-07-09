@@ -9,7 +9,7 @@ export interface ProjectDocument extends mongoose.Document {
   domain: string;
   languages: string;
   description: string;
-  maintainers: string[];
+  maintainers: string[];// z
   // getting user ID for displaying users to their projects
   userId:mongoose.Schema.Types.ObjectId | UserDocument;
   createdAt: Date;

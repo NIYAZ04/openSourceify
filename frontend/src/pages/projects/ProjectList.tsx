@@ -34,6 +34,14 @@ const ProjectList: React.FC<ProjectListProps> = ({ selectedDomain }) => {
         return Promise.resolve([]);
       }
     },
+    /* queryFn: async () => {
+      if (selectedDomain) {
+        const response = await getProjectsByDomain(selectedDomain);
+        return response.data; // Assuming response.data is the array of projects
+      } else {
+        return [];
+      }
+    },*/ 
     enabled: !!selectedDomain,
     onError: (err: any) => {
       console.error('Error loading projects:', err);

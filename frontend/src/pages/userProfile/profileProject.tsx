@@ -1,10 +1,10 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getUserForProfileProject, getProjectsByUser } from '../../lib/api';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getUserForProfileProject, getProjectsByUser, deleteProject } from '../../lib/api';
 import './profileProjects.css';
 
 interface Project {
-  id: string;
+  _id: string;
   name: string;
   link: string;
   willPay: boolean;
@@ -16,6 +16,8 @@ interface Project {
 }
 
 const ProfileProjects: React.FC = () => {
+  const queryClient = useQueryClient();
+
   // Fetch the user data to get user ID
   const { data: user, isLoading: userLoading, isError: userError } = useQuery({
     queryKey: ['user'],
@@ -35,6 +37,17 @@ const ProfileProjects: React.FC = () => {
     enabled: !!userId, // Fetch only if userId exists
   });
 
+  const mutation = useMutation({
+    mutationFn: (projectId: string) => deleteProject(projectId),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['projects', userId]);
+    },
+  });
+
+  const handleDelete = (projectId: string) => {
+    mutation.mutate(projectId);
+  };
+
   if (userLoading || projectsLoading) {
     return <div>Loading projects...</div>;
   }
@@ -51,10 +64,10 @@ const ProfileProjects: React.FC = () => {
       ) : (
         <ul className="ProfileProjects-list">
           {projects.map((project: Project) => (
-            <li key={project.id} className="ProfileProjects-item">
+            <li key={project._id} className="ProfileProjects-item">
               <h4>{project.name}</h4>
               <p>
-                <b>Link:</b> <a href={project.link} target="_blank" rel="noopener noreferrer">{project.link}</a>
+                <b>Link:</b> <a className='ProfileProjects-item-Ptag' href={project.link} target="_blank" rel="noopener noreferrer">{project.link}</a>
               </p>
               <p>
                 <b>Will Pay:</b> {project.willPay ? 'Yes' : 'No'}
@@ -74,6 +87,7 @@ const ProfileProjects: React.FC = () => {
               <p>
                 <b>Maintainers:</b> {project.maintainers.join(', ')}
               </p>
+              <button onClick={() => handleDelete(project._id)}>Delete Project</button>
             </li>
           ))}
         </ul>

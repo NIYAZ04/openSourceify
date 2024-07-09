@@ -8,6 +8,7 @@
     width: 95%;
     height: 55px;
     position: fixed;
+    z-index: 1001;
     top: 2%;
     left: 50%;
     transform: translate(-50%);

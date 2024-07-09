@@ -19,7 +19,7 @@ const Register: React.FC = () => {
   } = useMutation({
     mutationFn: register,
     onSuccess: () => {
-      navigate("/", {
+      navigate("/profile", {
         replace: true,
       });
     },

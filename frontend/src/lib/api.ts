@@ -77,3 +77,8 @@ export const createProject = async (data: ProjectData) => API.post("/projects", 
 
 export const getProjectsByUser = async (userId: string) => 
   API.get(`/projects/user/${userId}`);
+
+//  api to delete the project of the user 
+export const deleteProject = async (projectId: string) => {
+  return API.delete(`/projects/${projectId}`);
+};

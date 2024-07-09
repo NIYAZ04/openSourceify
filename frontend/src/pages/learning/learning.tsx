@@ -7,11 +7,9 @@ import PostgreSQL from './languages/postgreSql';
 
 const Learning: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
-
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
-
   const renderSelectedComponent = () => {
     switch (selectedOption) {
       case 'HTML':
@@ -26,8 +24,8 @@ const Learning: React.FC = () => {
         return <div className="default-message">Select what you want to learn</div>;
     }
   };
-
   return (
+    <>
     <div className="learning-container">
       <div className="options-wrapper">
         {['HTML', 'C++', 'JavaScript', 'PostgreSql'].map(option => (
@@ -50,7 +48,9 @@ const Learning: React.FC = () => {
         {renderSelectedComponent()}
       </div>
     </div>
+    </>
   );
+
 };
 
 export default Learning;
