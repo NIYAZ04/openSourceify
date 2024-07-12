@@ -1,0 +1,266 @@
+export const topicsOfJavaScript = [
+  "Introduction",
+  "Basic syntax and structure",
+  "Data types and variables",
+  "Operators",
+  "Control flow",
+  "for loop",
+  "while loop",
+  "do while loop",
+  "Functions",
+  "Arrays",
+  "Objects",
+  "Strings",
+  "Input/output",
+  "Basic file handling",
+  "Classes and objects",
+  "Constructors and destructors",
+  "Inheritance",
+  "Function overloading",
+  "Modules",
+  "Promises",
+  "Async/await",
+  "Callbacks",
+  "Error handling",
+  "Memory management",
+  "Closures",
+  "Arrow functions",
+  "Higher-order functions",
+  "Event handling",
+  "DOM manipulation",
+  "ES6 features",
+  "JSON",
+  "Regular expressions",
+  "Debugging",
+  "Unit testing",
+  "Prototypes and inheritance",
+  "Scope and hoisting",
+  "Strict mode",
+  "Spread and rest operators",
+  "Destructuring assignment",
+  "Template literals",
+  "Map, filter, and reduce",
+  "Set and Map objects",
+  "WeakSet and WeakMap objects",
+];
+
+export const topicContentsOfJavaScript: {
+    [key: string]: { title: string; content: string; code?: string };
+  } = {
+    Introduction: {
+      title: "Introduction",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Basic syntax and structure": {
+      title: "Basic syntax and structure",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Data types and variables": {
+      title: "Data types and variables",
+      content: "content",
+      code: "SampleCode",
+    },
+    Operators: {
+      title: "Operators",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Control flow": {
+      title: "Control flow",
+      content: "content",
+      code: "SampleCode",
+    },
+    "for loop": {
+      title: "for loop",
+      content: "content",
+      code: "SampleCode",
+    },
+    "while loop": {
+      title: "while loop",
+      content: "content",
+      code: "SampleCode",
+    },
+    "do while loop": {
+      title: "do while loop",
+      content: "content",
+      code: "SampleCode",
+    },
+    Functions: {
+      title: "Functions",
+      content: "content",
+      code: "SampleCode",
+    },
+    Arrays: {
+      title: "Arrays",
+      content: "content",
+      code: "SampleCode",
+    },
+    Objects: {
+      title: "Objects",
+      content: "content",
+      code: "SampleCode",
+    },
+    Strings: {
+      title: "Strings",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Input/output": {
+      title: "Input/output",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Basic file handling": {
+      title: "Basic file handling",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Classes and objects": {
+      title: "Classes and objects",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Constructors and destructors": {
+      title: "Constructors and destructors",
+      content: "content",
+      code: "SampleCode",
+    },
+    Inheritance: {
+      title: "Inheritance",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Function overloading": {
+      title: "Function overloading",
+      content: "content",
+      code: "SampleCode",
+    },
+    Modules: {
+      title: "Modules",
+      content: "content",
+      code: "SampleCode",
+    },
+    Promises: {
+      title: "Promises",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Async/await": {
+      title: "Async/await",
+      content: "content",
+      code: "SampleCode",
+    },
+    Callbacks: {
+      title: "Callbacks",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Error handling": {
+      title: "Error handling",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Memory management": {
+      title: "Memory management",
+      content: "content",
+      code: "SampleCode",
+    },
+    Closures: {
+      title: "Closures",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Arrow functions": {
+      title: "Arrow functions",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Higher-order functions": {
+      title: "Higher-order functions",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Event handling": {
+      title: "Event handling",
+      content: "content",
+      code: "SampleCode",
+    },
+    "DOM manipulation": {
+      title: "DOM manipulation",
+      content: "content",
+      code: "SampleCode",
+    },
+    "ES6 features": {
+      title: "ES6 features",
+      content: "content",
+      code: "SampleCode",
+    },
+    JSON: {
+      title: "JSON",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Regular expressions": {
+      title: "Regular expressions",
+      content: "content",
+      code: "SampleCode",
+    },
+    Debugging: {
+      title: "Debugging",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Unit testing": {
+      title: "Unit testing",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Prototypes and inheritance": {
+      title: "Prototypes and inheritance",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Scope and hoisting": {
+      title: "Scope and hoisting",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Strict mode": {
+      title: "Strict mode",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Spread and rest operators": {
+      title: "Spread and rest operators",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Destructuring assignment": {
+      title: "Destructuring assignment",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Template literals": {
+      title: "Template literals",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Map, filter, and reduce": {
+      title: "Map, filter, and reduce",
+      content: "content",
+      code: "SampleCode",
+    },
+    "Set and Map objects": {
+      title: "Set and Map objects",
+      content: "content",
+      code: "SampleCode",
+    },
+    "WeakSet and WeakMap objects": {
+      title: "WeakSet and WeakMap objects",
+      content: "content",
+      code: "SampleCode",
+    }
+  };
+  

@@ -1,5 +1,4 @@
 import API from "../config/apiClient";
-import axios from "axios";
 
 
 export const getUserForProfileProject = async () => {
@@ -72,6 +71,8 @@ interface ProjectData {
 }
 
 export const getProjectsByDomain = async (domain: string) => API.get(`/projects/domain/${domain}`);
+
+
 export const createProject = async (data: ProjectData) => API.post("/projects", data);
 
 

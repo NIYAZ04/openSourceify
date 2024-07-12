@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUserForProfileProject, getProjectsByUser, deleteProject } from '../../lib/api';
@@ -24,7 +25,6 @@ const ProfileProjects: React.FC = () => {
     queryFn: getUserForProfileProject,
   });
 
-  // Fetch the projects for the user using the user ID
   const userId = user?._id;
   const {
     data: projects = [],
@@ -34,7 +34,7 @@ const ProfileProjects: React.FC = () => {
   } = useQuery({
     queryKey: ['projects', userId],
     queryFn: () => (userId ? getProjectsByUser(userId) : Promise.resolve([])),
-    enabled: !!userId, // Fetch only if userId exists
+    enabled: !!userId, 
   });
 
   const mutation = useMutation({

@@ -15,6 +15,7 @@ interface Project {
   maintainers: string[];
 }
 
+
 interface ProjectListProps {
   selectedDomain: string | null;
 }
@@ -52,9 +53,8 @@ const ProjectList: React.FC<ProjectListProps> = ({ selectedDomain }) => {
   if (isError)
     return <div>{(error as Error).message || 'Error loading projects'}</div>;
 
-  const message =
-    projects.length === 0? `We do not have projects in ${selectedDomain}. We will have more projects soon.`
-      : '';
+  
+  const message =projects.length === 0? `We do not have projects in ${selectedDomain}. We will have more projects soon.`: '';
 
   return (
     <div className="project-list-container">

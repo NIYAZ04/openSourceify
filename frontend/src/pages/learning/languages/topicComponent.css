@@ -52,19 +52,21 @@
 }
 
 .sidebar-toggle {
-  display: block; 
+  display: block;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: -9px;
+  left: 0px;
   background: #007bff;
+    background-color: rgb(0, 123, 255);
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 11px;
   cursor: pointer;
   z-index: 10;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 9px;
+  font-size: 13px;
 }
+
 
 @media (max-width: 850px) {
   .main-container {
