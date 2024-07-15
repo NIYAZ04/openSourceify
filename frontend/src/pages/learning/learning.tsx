@@ -3,7 +3,7 @@ import './learning.css';
 import HTMLComponent from './languages/html';
 import CPPComponent from './languages/cpp';
 import JavaScriptComponent from './languages/javaScript';
-import PostgreSQL from './languages/postgreSql';
+import GitCommand from './languages/git';
 
 const Learning: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -18,8 +18,8 @@ const Learning: React.FC = () => {
         return <CPPComponent />;
       case 'JavaScript':
         return <JavaScriptComponent />;
-      case 'PostgreSql':
-        return <PostgreSQL />;
+      case 'Git':
+        return <GitCommand />
       default:
         return <div className="default-message">Select what you want to learn</div>;
     }
@@ -28,7 +28,7 @@ const Learning: React.FC = () => {
     <>
     <div className="learning-container">
       <div className="options-wrapper">
-        {['HTML', 'C++', 'JavaScript', 'PostgreSql'].map(option => (
+        {['HTML', 'C++', 'JavaScript', 'Git'].map(option => (
           <label className="option" key={option}>
             <input 
               className="input" 

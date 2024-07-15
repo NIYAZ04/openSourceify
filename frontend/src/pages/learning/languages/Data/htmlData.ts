@@ -1,4 +1,3 @@
-
 export const topics = [
     "HTML Introduction", "HTML Basic", 
     "HTML Elements", "HTML Attributes", "HTML Headings", "HTML Paragraphs", "HTML Styles",

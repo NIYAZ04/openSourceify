@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { topicsOfJavaScript, topicContentsOfJavaScript } from './Data/javaScriptData';
+import { topicsOfGit,topicContentsOfGit } from './Data/gitData';
 import "./specificStyleJavascript.css"
 
-const JavaScriptSpecific: React.FC = () => {
+const git: React.FC = () => {
+ 
   const [selectedTopic, setSelectedTopic] = useState<string>('Introduction');
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
@@ -14,7 +15,7 @@ const JavaScriptSpecific: React.FC = () => {
   };
 
   const renderTopicContent = () => {
-    const topic = topicContentsOfJavaScript[selectedTopic];
+    const topic = topicContentsOfGit[selectedTopic];
     if (!topic) {
       return <p>Content not found try to change</p>; 
     }
@@ -38,7 +39,7 @@ const JavaScriptSpecific: React.FC = () => {
       </button>
       <div className={`SidebarJavaScriptSpecific ${sidebarOpen ? 'open' : ''}`}>
         <ul>
-          {topicsOfJavaScript.map(topic => (
+          {topicsOfGit.map(topic => (
             <li key={topic} onClick={() => handleTopicChange(topic)}>{topic}</li>
           ))}
         </ul>
@@ -50,4 +51,4 @@ const JavaScriptSpecific: React.FC = () => {
   );
 };
 
-export default JavaScriptSpecific;
+export default git;
