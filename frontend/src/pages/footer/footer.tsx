@@ -24,15 +24,15 @@ const footer: React.FC = () => {
         <div className="footer-section">
           <h3>Connect with Us</h3>
           <ul className="social-icons">
-            <li><a href="#"><FaLinkedin /></a></li>
-            <li><a href="#"><FaCalendarAlt /></a></li>
+            <li><a href="https://www.linkedin.com/in/mir-niyazul-haque/"><FaLinkedin /></a></li>
+            <li><a href="https://calendly.com/mirniyazulhaque/mirniyazulhaque"><FaCalendarAlt /></a></li>
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Privacy Policy</h3>
-          <ul>
-            <li><a href="/privacy">Privacy Notice</a></li>
-          </ul>
+        <a href="https://docs.google.com/document/d/19KWrcbZe-hJzfPKjaRZmKmtuBsyZ1FRL/edit?usp=sharing&ouid=112888155732842307989&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="privacy-policy-link">
+    Privacy Policy
+  </a>
+         
         </div>
       </div>
       <div className="footer-bottom">
