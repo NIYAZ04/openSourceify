@@ -10,10 +10,14 @@ const Navbar: React.FC = () => {
         setClicked(!clicked);
     };
 
+    const closeMobileMenu = () => {
+        setClicked(false);
+    };
+
     return (
         <div>
             <nav className="NavbarItems">
-            <h1 className="logo">
+                <h1 className="logo">
                     <span className="logo-open">open</span>
                     <span className="logo-sourceify">Sourceify</span>
                 </h1>
@@ -24,7 +28,11 @@ const Navbar: React.FC = () => {
                 <ul className={clicked ? "nav-menu active" : "nav-menu"}>
                     {navlinks.map((item, index) => (
                         <li key={index}>
-                            <Link to={item.url} className={item.cName}>
+                            <Link 
+                                to={item.url} 
+                                className={item.cName}
+                                onClick={closeMobileMenu}
+                            >
                                 <i className={item.icon}></i> {item.title}
                             </Link>
                         </li>

@@ -16,8 +16,7 @@ const footer: React.FC = () => {
         <div className="footer-section">
           <h3>Resources</h3>
           <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/domain">Domain</a></li>
+            <li><a href="/about">About Us</a></li>  
             <li><a href="/projects">Projects</a></li>
           </ul>
         </div>

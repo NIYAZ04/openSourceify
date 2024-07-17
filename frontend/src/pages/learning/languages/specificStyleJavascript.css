@@ -93,8 +93,9 @@
   
     .SidebarToggleJavaScriptSpecific {
       display: block;
-      top: 10px;
-      left: 10px;
+      top: -12px;
+    left: -7px;
+
     }
   }
   
@@ -149,18 +150,19 @@
     white-space: pre-wrap;
   }
   
-  pre {
-    background-color: #6c0e0e75;
-    padding: 5%;
-    border-radius: 4px;
-    overflow-x: auto;
-  }
+
+pre {
+  background-color: #000000ed;
+  padding: 5%;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+code {
+  color: #19d919;
+  font-family: 'Courier New', Courier, monospace;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
   
-  code {
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  
+}

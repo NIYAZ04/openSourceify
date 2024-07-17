@@ -2,7 +2,8 @@ import Contactus from "../contactus/contactus";
 import Home from '../home/home';
 import Learning from '../learning/learning';
 import Projects from '../projects/projects';
-import Login from '../registerAndLogin/Login'
+
+import Profile from "../userProfile/Profile";
 interface NavLink {
     title: string;
     url: string;
@@ -43,11 +44,20 @@ export const navlinks: NavLink[] = [
         icon: "fa-solid fa-address-book",
         component: Contactus
     },
-    {
+  /*  {
         title: "Sign Up",
         url: "/login",
         cName: "nav-links-mobile",
         icon: "fa-solid fa-user-plus",
         component:Login
+    }
+
+    */
+    {
+        title: "Profile",
+        url: "/profile",
+        cName: "nav-links",
+        icon: "fa-solid fa-user",
+        component: Profile
     }
 ];

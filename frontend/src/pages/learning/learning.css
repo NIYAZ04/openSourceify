@@ -5,6 +5,8 @@
   margin-top: 20px;
   height: 110vh;
   width:100vw;
+  z-index: 10;
+ 
 }
 
 .options-wrapper {
@@ -44,6 +46,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
 .default-message {
@@ -53,29 +56,37 @@
 }
 
 /* Media query for max-width 850px */
-@media (max-width: 850px) {
-  .options-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .option {
-    margin-bottom: 10px;
-  }
+  @media (max-width: 850px) {
 
-  .btn {
-    width: 100%;
-    text-align: center;
+    .learning-container {
+      height: 130vh;
+    
+    }
+    .options-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .option {
+      margin-bottom: 10px;
+    }
+  
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .content-wrapper {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .default-message {
+      font-size: 18px;
+      text-align: center;
+    }
   }
-
-  .content-wrapper {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .default-message {
-    font-size: 18px;
-    text-align: center;
-  }
-}
+  
+  
