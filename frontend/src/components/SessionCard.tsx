@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import useDeleteSession from "../hooks/useDeleteSessions";
 

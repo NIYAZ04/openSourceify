@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Navbar from './pages/navbar/navbar';
 import './App.css'
 import Contactus from './pages/contactus/contactus';

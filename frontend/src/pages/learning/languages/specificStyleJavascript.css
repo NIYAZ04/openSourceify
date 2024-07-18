@@ -139,6 +139,7 @@
   .ContentJavaScriptSpecific {
     width: 70%;
     padding: 20px;
+    z-index: 1;
   }
   
   .ContentJavaScriptSpecific h2 {

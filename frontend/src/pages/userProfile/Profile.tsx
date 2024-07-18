@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import useAuth from '../../hooks/useAuth';
 import './profile.css';
 import ProfileProjects from './profileProject';

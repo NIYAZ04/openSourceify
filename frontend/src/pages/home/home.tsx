@@ -11,6 +11,7 @@ import UserComments from './userComments';
 const home: React.FC = () => {
   return (
     <>
+<div className="StartToButtom">
       <div className="homeMainContainer">
         <div className="homeMainContainerLeft">
           <h1>
@@ -69,8 +70,8 @@ const home: React.FC = () => {
       </div>
 
      
-        <UserComments></UserComments>
-      
+      <UserComments></UserComments>
+      </div>   
     </>
   );
 };

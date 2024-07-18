@@ -13,8 +13,8 @@ const UserComments: React.FC = () => {
   const comments: Comment[] = [
     { name: 'Monikanchan', comment: 'Great experience working together!' },
     { name: 'Raashna Krishn', comment: 'Loved the collaboration and teamwork.' },
-    { name: 'Prasoon Agarwal', comment: 'Very professional and dedicated team.' },
-    { name: 'Arnab Bhatacharya', comment: 'Exceptional service and support.' },
+    { name: 'Prasoon Agarwal', comment: 'Great,But more data science projects required' },
+    { name: 'Arnab Bhatacharya', comment: 'Got to learn a lot of things' },
   ];
 
   const settings = {

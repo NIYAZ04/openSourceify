@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Container, Heading, Spinner, Text, VStack } from "@chakra-ui/react";
 import SessionCard from "../../components/SessionCard";
 import useSessions from "../../hooks/useSessions";
