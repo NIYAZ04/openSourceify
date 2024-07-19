@@ -20,6 +20,8 @@ app.use(
   cors({
     origin: APP_ORIGIN,
     credentials: true,
+  
+
   })
 );
 app.use(cookieParser());
@@ -44,5 +46,6 @@ app.use(errorHandler);
 
 app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT} in ${NODE_ENV} environment`);
+  console.log("APP_ORIGIN:", APP_ORIGIN);
   await connectToDatabase();
 });
