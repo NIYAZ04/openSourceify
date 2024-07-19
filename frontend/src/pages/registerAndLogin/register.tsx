@@ -12,6 +12,7 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const allowedEmailDomains = ["@gmail.com", "@icloud.com", "@yahoo.com","@kiit.ac.in"];
 
   const {
     mutate: createAccount,
@@ -50,6 +51,14 @@ const Register: React.FC = () => {
       toast.error("Password must be at least 6 characters long");
       return;
     }
+      // Email domain validation
+      const isValidEmail = allowedEmailDomains.some((domain) =>
+        email.endsWith(domain)
+      );
+      if (!isValidEmail) {
+        toast.error("Please use real credentials");
+        return;
+      }
 
     createAccount({ email, password, confirmPassword, userName });
   };
