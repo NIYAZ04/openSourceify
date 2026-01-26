@@ -151,7 +151,7 @@ export const topicsOfCpp = [
       // Do-While Loop
       int num = 0;
       do {
-          std::cout << "Number is " << num << std::endl;
+          std::cout << "Number is" << num << std::endl;
           ++num;
       } while (num < 2);
   
