@@ -1,1 +1,0 @@
-// add validation for different components later //

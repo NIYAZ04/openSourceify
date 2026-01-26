@@ -1,0 +1,328 @@
+# Frontend Multi-Stage CI Pipeline (Production)
+# This pipeline is written to:
+# 1. Be production-ready
+# 2. Separate "optimal" CI from "heavy" CI
+#
+# Folder structure assumed:
+# frontend/
+# backend/
+#
+
+
+name: Frontend Multi-Stage CI
+
+# ------------------------------------------------------------
+# Trigger conditions
+# ------------------------------------------------------------
+# We run CI on:
+# - push to main/master  → protect production
+# - pull requests       → prevent bad code from merging
+#
+# In a monorepo, we also filter paths so frontend CI
+# runs ONLY when frontend code changes.
+# ------------------------------------------------------------
+on:
+  push:
+    branches: [main, master, open2.0]
+    paths:
+      - "frontend/**"
+  pull_request:
+    branches: [main, master, open2.0]
+    paths:
+      - "frontend/**"
+
+jobs:
+
+  # ==========================================================
+  # JOB 1: INSTALL
+  # ==========================================================
+  # Purpose:
+  # - Validate package-lock.json
+  # - Catch dependency issues early
+  # - Act as a baseline stage
+  #
+  # Why separate install job?
+  # - Clear failure signal if deps are broken
+  # - Other jobs depend on this stage
+  # ==========================================================
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Checkout repository so runner has access to code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js environment
+      # - Node version is pinned for reproducibility
+      # - npm cache speeds up npm ci
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.1"
+          cache: "npm"
+
+      # npm ci is used instead of npm install
+      # WHY:
+      # - Faster
+      # - Deterministic
+      # - Fails if lockfile is invalid (good for CI)
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      # --------------------------------------------------------
+      # HEAVY VARIANT (COMMENTED)
+      # --------------------------------------------------------
+      # Caching node_modules directly is faster BUT:
+      # - Large cache size
+      # - OS-specific
+      # - Can cause hard-to-debug issues
+      #
+      # Enable ONLY when dependency install becomes a bottleneck.
+      # --------------------------------------------------------
+      # - name: Cache node_modules
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ./frontend/node_modules
+      #     key: ${{ runner.os }}-node-modules-${{ hashFiles('frontend/package-lock.json') }}
+
+      # --------------------------------------------------------
+      # HEAVY VARIANT (COMMENTED)
+      # --------------------------------------------------------
+      # Uploading node_modules as artifact allows reuse
+      # across jobs but increases complexity and storage.
+      #
+      # Useful in very large monorepos.
+      # --------------------------------------------------------
+      # - name: Upload node_modules artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: node_modules
+      #     path: ./frontend/node_modules
+
+
+  # ===================
+  # JOB 2: LINT
+  # ===================
+  # Purpose:
+  # - Enforce code style and conventions
+  # - Catch errors early before build/test
+  #
+  # Lint is kept separate so failures are explicit.
+  # ==========================================================
+  lint:
+    name: Lint
+    runs-on: ubuntu-22.04
+    needs: install
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.1"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      # Lint failure should fail CI immediately
+      - name: Run linter
+        run: npm run lint
+        working-directory: ./frontend
+
+
+  # ==========================================================
+  # JOB 3: TYPE CHECK
+  # ==========================================================
+  # Purpose:
+  # - Catch TypeScript errors
+  # - Prevent runtime bugs caused by bad types
+  #
+  # Type-checking is NOT the same as building.
+  # ==========================================================
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-22.04
+    needs: install
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.1"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      # Fallback ensures pipeline works even if custom script
+      # is missing in package.json
+      - name: Run type check
+        run: npm run type-check || npm run tsc --noEmit
+        working-directory: ./frontend
+
+
+  # ==========================================================
+  # JOB 4: UNIT TESTS
+  # ==========================================================
+  # Purpose:
+  # - Verify business logic
+  # - Prevent regressions
+  #
+  # CI MUST be non-interactive.
+  # watchAll=false prevents hanging runners.
+  # ==========================================================
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-22.04
+    needs: install
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.1"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      # --watchAll=false is CRITICAL in CI
+      # Without it, test runner waits forever
+      - name: Run unit tests
+        run: npm test -- --watchAll=false
+        working-directory: ./frontend
+
+      # --------------------------------------------------------
+      # HEAVY VARIANT (COMMENTED)
+      # --------------------------------------------------------
+      # Coverage artifacts help in large teams but:
+      # - Increase runtime
+      # - Add noise early
+      #
+      # Enable once test coverage matters.
+      # --------------------------------------------------------
+      # - name: Upload coverage
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: coverage
+      #     path: ./frontend/coverage
+
+
+  # ==========================================================
+  # JOB 5: BUILD
+  # ==========================================================
+  # Purpose:
+  # - Produce production-ready assets
+  #
+  # Build runs ONLY if:
+  # - Lint passed
+  # - Type check passed
+  # - Tests passed
+  #
+  # This enforces quality gates.
+  # ==========================================================
+  build:
+    name: Build (Production)
+    runs-on: ubuntu-22.04
+    needs: [lint, typecheck, test]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.1"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      # Build produces deployable assets (dist/)
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./frontend
+
+      # --------------------------------------------------------
+      # HEAVY VARIANT (COMMENTED)
+      # --------------------------------------------------------
+      # Uploading build artifacts is required if:
+      # - You deploy from CI
+      # - You have a separate deploy job
+      #
+      # --------------------------------------------------------
+      # - name: Upload build artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: frontend-dist
+      #     path: ./frontend/dist
+
+
+  # ==========================================================
+  # OPTIONAL HEAVY JOBS 
+  # ==========================================================
+  # These are REAL production jobs but intentionally disabled
+  # until the project and team grow.
+  # ==========================================================
+
+  # ------------------------------
+  # Bundle size analysis
+  # ------------------------------
+  # analyze:
+  #   name: Bundle Analysis
+  #   runs-on: ubuntu-22.04
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #     - run: npm ci
+  #       working-directory: ./frontend
+  #     - run: npm run analyze
+  #       working-directory: ./frontend
+
+  # ------------------------------
+  # End-to-End tests (Playwright)
+  # ------------------------------
+  # e2e:
+  #   name: E2E Tests
+  #   runs-on: ubuntu-22.04
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #     - run: npm ci
+  #       working-directory: ./frontend
+  #     - run: npx playwright install --with-deps
+  #     - run: npm run test:e2e
+  #       working-directory: ./frontend
+
+  # ------------------------------
+  # Security audit
+  # ------------------------------
+  # audit:
+  #   name: Security Audit
+  #   runs-on: ubuntu-22.04
+  #   needs: install
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #     - run: npm ci
+  #       working-directory: ./frontend
+  #     - run: npm audit --audit-level=high

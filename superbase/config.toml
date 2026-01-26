@@ -1,0 +1,16 @@
+project_id = "dlbcymmsrpimvzuycjsl"
+
+[functions.projects]
+verify_jwt = false
+
+[functions.comments]
+verify_jwt = false
+
+[functions.upvotes]
+verify_jwt = false
+
+[functions.profiles]
+verify_jwt = false
+
+[functions.stats]
+verify_jwt = false
