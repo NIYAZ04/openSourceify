@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, GitBranch, Rocket, BookOpen, Mail, User, LogOut } from "lucide-react";
+import { Menu, X, GitBranch, Rocket, BookOpen, Mail, User, LogOut, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const navLinks = [
+  { name: "Home", path: "/", icon: Home },
   { name: "Projects", path: "/projects", icon: Rocket },
   { name: "Learn", path: "/learn", icon: BookOpen },
   { name: "Contact", path: "/contact", icon: Mail },
@@ -90,6 +92,7 @@ export default function Navbar() {
                 </Button>
               </>
             )}
+            <ModeToggle />
           </div>
 
           <button

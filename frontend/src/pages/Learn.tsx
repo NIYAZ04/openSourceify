@@ -33,7 +33,7 @@ export default function Learn() {
             Learn & <span className="gradient-text">Grow</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Master the fundamentals before contributing. From Git workflows to programming languages, 
+            Master the fundamentals before contributing. From Git workflows to programming languages,
             we've got you covered.
           </p>
         </motion.div>
@@ -114,7 +114,7 @@ export default function Learn() {
           >
             <div className="glass-card rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-6">{selectedTopic.title}</h2>
-              
+
               <div className="prose prose-slate max-w-none">
                 <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                   {selectedTopic.content}
@@ -124,7 +124,7 @@ export default function Learn() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4">Example</h3>
                     <div className="relative rounded-xl overflow-hidden">
-                      <div className="absolute top-0 left-0 right-0 h-10 bg-foreground/90 flex items-center px-4">
+                      <div className="absolute top-0 left-0 right-0 h-10 bg-slate-900 flex items-center px-4">
                         <div className="flex gap-2">
                           <div className="w-3 h-3 rounded-full bg-red-500" />
                           <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -134,15 +134,15 @@ export default function Learn() {
                           {selectedLanguage.name.toLowerCase()}.{selectedLanguage.id === "git"
                             ? "sh"
                             : selectedLanguage.id === "html"
-                            ? "html"
-                            : selectedLanguage.id === "cpp"
-                            ? "cpp"
-                            : selectedLanguage.id === "kubernetes"
-                            ? "yaml"
-                            : "js"}
+                              ? "html"
+                              : selectedLanguage.id === "cpp"
+                                ? "cpp"
+                                : selectedLanguage.id === "kubernetes"
+                                  ? "yaml"
+                                  : "js"}
                         </span>
                       </div>
-                      <pre className="bg-foreground/95 text-primary-foreground p-6 pt-14 overflow-x-auto scrollbar-thin">
+                      <pre className="bg-slate-950 text-slate-50 p-6 pt-14 overflow-x-auto scrollbar-thin">
                         <code className="text-sm font-mono leading-relaxed">
                           {selectedTopic.code}
                         </code>

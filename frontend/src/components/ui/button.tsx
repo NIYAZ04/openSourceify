@@ -18,7 +18,7 @@ const buttonVariants = cva(
         // OpenSourceify custom variants
         hero: "gradient-primary text-primary-foreground shadow-glow-teal hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0",
         heroOutline: "border-2 border-primary text-primary bg-background hover:bg-primary hover:text-primary-foreground",
-        glass: "bg-white/80 backdrop-blur-sm border border-white/50 text-foreground hover:bg-white shadow-soft",
+        glass: "bg-white/80 dark:bg-secondary/50 backdrop-blur-sm border border-white/50 dark:border-border/50 text-foreground hover:bg-white dark:hover:bg-secondary/80 shadow-soft",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -37,7 +37,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
