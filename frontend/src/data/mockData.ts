@@ -4,6 +4,7 @@ import { getCppLanguageContent } from "@/pages/cppContent";
 import { getGitLanguageContent } from "@/pages/gitContent";
 import { getHtmlLanguageContent } from "@/pages/htmlContent";
 import { getJavaScriptLanguageContent } from "@/pages/javaScriptContent";
+import { getKubernetesLanguageContent } from "@/pages/kubernetesContent";
 
 export interface Project {
   _id: string;
@@ -235,12 +236,13 @@ export const mockTestimonials: Testimonial[] = [
 
 export const learnLanguages: LearnLanguage[] = [];
 
-// Add Git, HTML, JavaScript and C++ languages dynamically from their respective files
+
 export const learnLanguagesWithCpp = (): LearnLanguage[] => [
   getGitLanguageContent(),
   getHtmlLanguageContent(),
   getJavaScriptLanguageContent(),
   getCppLanguageContent(),
+  getKubernetesLanguageContent(),
 ];
 
 export const stats = {

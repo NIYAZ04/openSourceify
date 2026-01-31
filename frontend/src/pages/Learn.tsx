@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Code, FileCode, Binary, GitBranch, ChevronRight } from "lucide-react";
+import { BookOpen, Code, FileCode, Binary, GitBranch, ChevronRight, Server } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { learnLanguagesWithCpp, type LearnTopic } from "@/data/mockData";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,9 @@ const iconMap: Record<string, React.ElementType> = {
   FileCode,
   Code,
   Binary,
+  Server, // For Kubernetes
 };
+
 
 export default function Learn() {
   const allLanguages = learnLanguagesWithCpp();
@@ -129,7 +131,15 @@ export default function Learn() {
                           <div className="w-3 h-3 rounded-full bg-green-500" />
                         </div>
                         <span className="ml-4 text-xs text-muted-foreground font-mono">
-                          {selectedLanguage.name.toLowerCase()}.{selectedLanguage.id === "git" ? "sh" : selectedLanguage.id === "html" ? "html" : selectedLanguage.id === "cpp" ? "cpp" : "js"}
+                          {selectedLanguage.name.toLowerCase()}.{selectedLanguage.id === "git"
+                            ? "sh"
+                            : selectedLanguage.id === "html"
+                            ? "html"
+                            : selectedLanguage.id === "cpp"
+                            ? "cpp"
+                            : selectedLanguage.id === "kubernetes"
+                            ? "yaml"
+                            : "js"}
                         </span>
                       </div>
                       <pre className="bg-foreground/95 text-primary-foreground p-6 pt-14 overflow-x-auto scrollbar-thin">

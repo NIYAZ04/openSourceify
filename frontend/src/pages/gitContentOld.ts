@@ -34,22 +34,13 @@ export const topicContentsOfGit: {
 } = {
   "Introduction": {
     title: "Introduction",
-    content: `Git is a distributed version control system designed to handle everything from small to very large projects with speed and efficiency. It allows multiple people to work on a project simultaneously, tracks changes to files, and enables collaborative work by merging changes from different contributors.
+    content: `Git is a distributed version control system used to manage code efficiently for projects of any size. It allows multiple developers to work on the same project at the same time while tracking every change made to files.
 
-Key Concepts:
-1. Version Control - Git helps track changes to files over time, allowing you to revert to previous versions, compare changes, and understand the history of a project.
-2. Distributed System - Unlike centralized version control systems, Git allows each contributor to have a full copy of the repository, including its history. This enhances redundancy and reliability.
-3. Repository - A Git repository is a directory that contains all of your project files and their history. Repositories can be local (on your machine) or remote (on a server).
-4. Commit - A commit is a snapshot of your project at a particular point in time. Each commit is identified by a unique hash and includes a message describing the changes.
-5. Branching - Branching allows you to create separate lines of development within a repository. You can work on new features or bug fixes in a branch without affecting the main project.
-6. Merging - When a branch is ready, you can merge its changes back into the main branch (usually called "main" or "master"), combining the work from different branches.
+Git records changes over time so you can return to previous versions, compare modifications, and understand how a project has evolved. Unlike centralized systems, every developer has a full copy of the repository and its history, which improves reliability and enables offline work.
 
-Benefits of Using Git:
-- Collaboration - Multiple developers can work on the same project simultaneously, with Git managing and integrating their changes.
-- History Tracking - Git keeps a detailed history of changes, making it easy to track progress and understand the evolution of a project.
-- Branching and Merging - Git's branching model allows for isolated development, feature experimentation, and easy integration of changes.
+A Git repository stores project files along with their complete change history. Changes are saved as commits, where each commit represents a snapshot of the project at a specific moment. Git also supports branching, which allows working on features or fixes independently and merging them back when ready.
 
-Git is essential for modern software development, providing tools to manage code changes, collaborate with others, and maintain a clean and organized project history.`,
+Because of these capabilities, Git is a core tool in modern software development and an essential skill for developers.`,
     code: `# Initialize a new Git repository
 git init
 
@@ -77,32 +68,11 @@ git merge <branch-name>`
 
   "Installing Git": {
     title: "Installing Git",
-    content: `Windows:
-1. Download the Git installer from https://git-scm.com/download/win
-2. Run the installer and follow the on-screen instructions
-3. During installation, you can choose the default options
-4. Open a command prompt and run "git --version" to verify
+    content: `Git can be installed on all major operating systems. On Windows, it is installed using the official installer, which guides you through the setup process. After installation, Git can be verified from the command line.
 
-Linux (Debian/Ubuntu):
-1. Open a terminal window
-2. Update your package list: sudo apt update
-3. Install Git: sudo apt install git
-4. Verify the installation: git --version
+On Linux systems, Git is installed using the system package manager. The exact command depends on the distribution, but verification is done the same way.
 
-Linux (Fedora):
-1. Open a terminal window
-2. Install Git: sudo dnf install git
-3. Verify the installation: git --version
-
-Linux (Arch):
-1. Open a terminal window
-2. Install Git: sudo pacman -S git
-3. Verify the installation: git --version
-
-Mac:
-1. Open the Terminal application
-2. Install Git using Homebrew: brew install git
-3. Verify the installation: git --version`,
+On macOS, Git is commonly installed using Homebrew. Once installed, checking the Git version confirms that the setup is complete.`,
     code: `# Verify Git Installation
 git --version
 
@@ -112,44 +82,11 @@ git config --list`
 
   "Basic Git commands": {
     title: "Basic Git commands",
-    content: `Initialize a Repository:
-Create a new Git repository in your project directory using "git init".
+    content: `Git provides a set of essential commands used in daily development. A repository can be created locally or cloned from a remote source.
 
-Clone a Repository:
-Create a local copy of a remote repository using "git clone <repository_url>".
+Git tracks the current state of your project and allows you to stage changes before committing them. Commits store snapshots of your work along with messages explaining what changed.
 
-Check Repository Status:
-View the status of your working directory and staging area using "git status".
-
-Add Changes:
-Stage specific files using "git add <file_name>" or all changes using "git add .".
-
-Commit Changes:
-Save staged changes to the repository using "git commit -m 'Your commit message'".
-
-View Commit History:
-Display the commit history using "git log" or "git log --oneline" for a compact view.
-
-Create a Branch:
-Create a new branch using "git branch <branch_name>".
-
-Switch Branches:
-Change to a different branch using "git checkout <branch_name>" or "git switch <branch_name>".
-
-Merge Branches:
-Combine changes from another branch using "git merge <branch_name>".
-
-Delete a Branch:
-Remove a branch using "git branch -d <branch_name>".
-
-Fetch Changes:
-Download changes from the remote repository without merging using "git fetch".
-
-Pull Changes:
-Download and merge changes from the remote repository using "git pull".
-
-Push Changes:
-Upload your local changes to the remote repository using "git push".`,
+Branches enable parallel development, making it easy to switch contexts, merge work, and delete unused branches. Git also supports fetching updates, pulling changes, and pushing commits to remote repositories.`,
     code: `# Initialize a repository
 git init
 
@@ -191,25 +128,11 @@ git push`
 
   "Git configuration": {
     title: "Git configuration",
-    content: `Git configuration is essential for setting up your identity, preferences, and behavior of Git on your system. Configurations can be applied at three levels: system, global, and local.
+    content: `Git configuration defines how Git behaves and how commits are identified. You can configure your name and email so every commit is properly attributed.
 
-Set Your Name and Email:
-Configure your identity for all commits using "git config --global user.name" and "git config --global user.email".
+Configuration values can be applied globally, locally, or system-wide. Git allows viewing all current configuration settings at any time.
 
-View Current Configuration:
-Display all Git configurations using "git config --list".
-
-Set Default Text Editor:
-Set your preferred text editor for Git operations using "git config --global core.editor".
-
-Set Default Merge Tool:
-Specify your default merge tool using "git config --global merge.tool".
-
-Create Aliases:
-Create shortcuts for commonly used Git commands, such as "git config --global alias.co checkout".
-
-Configure Line Endings:
-Handle line endings properly across different operating systems. For Windows, use "git config --global core.autocrlf true". For macOS and Linux, use "git config --global core.autocrlf input".`,
+Common configuration options include setting a default editor, choosing a merge tool, creating command aliases, and handling line endings correctly across operating systems.`,
     code: `# Set your name and email
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
@@ -238,25 +161,11 @@ git config --global core.autocrlf input`
 
   "Git repositories": {
     title: "Git repositories",
-    content: `A Git repository is a storage space where your project files and their history are stored. Repositories can be local (on your machine) or remote (hosted on a server). They track changes to your project over time, allowing collaboration and the ability to revert to previous versions.
+    content: `A Git repository stores project files along with their complete history. Repositories can exist locally on your machine or remotely on a server.
 
-Creating a Local Repository:
-Initialize a new Git repository in your project directory using "git init". This creates a hidden .git directory containing all necessary version control files.
+Initializing a repository creates internal Git metadata that tracks changes. Cloning a repository downloads the full project history so work can begin immediately.
 
-Cloning a Remote Repository:
-Create a local copy of a remote repository using "git clone <repository_url>". This downloads all files and history from the remote repository.
-
-Viewing the Current Repository:
-Check the current repository status using "git status" to see which files have been modified, staged, or are untracked.
-
-Adding a Remote Repository:
-Link a remote repository to your local repository using "git remote add <remote_name> <repository_url>". For example: "git remote add origin https://github.com/user/repo.git".
-
-Viewing Remote Repositories:
-Display all remote repositories linked to your local repository using "git remote -v".
-
-Removing a Remote Repository:
-Unlink a remote repository using "git remote remove <remote_name>".`,
+Local repositories can be connected to remote repositories to enable collaboration and synchronization.`,
     code: `# Initialize a repository
 git init
 
@@ -278,22 +187,11 @@ git remote remove <remote_name>`
 
   "Staging changes": {
     title: "Staging changes",
-    content: `Staging changes is the process of adding modifications to the staging area before committing them to the repository. This allows you to group related changes into a single commit.
+    content: `Staging is the step between editing files and committing them. It allows you to choose exactly which changes will be included in the next commit.
 
-Add a Single File:
-Stage a specific file using "git add <file_name>".
+You can stage individual files, stage everything at once, or interactively select parts of files. Staged changes can be removed without losing file modifications.
 
-Add All Changes:
-Stage all changes in the current directory and subdirectories using "git add .".
-
-Add Changes Interactively:
-Review and selectively stage changes using "git add -i".
-
-Unstage Changes:
-Remove files from the staging area without discarding changes using "git reset <file>".
-
-View Staged Changes:
-Display the changes that have been staged using "git diff --staged".`,
+Reviewing staged changes helps ensure clean and intentional commits.`,
     code: `# Stage a single file
 git add <file_name>
 
@@ -312,22 +210,11 @@ git diff --staged`
 
   "Committing changes": {
     title: "Committing changes",
-    content: `Committing changes saves your staged modifications to the repository history. Each commit is a snapshot of your project at that point in time and includes a message describing the changes.
+    content: `Committing saves staged changes permanently in the repository history. Each commit represents the project state at a specific point in time.
 
-Basic Commit:
-Save staged changes using "git commit -m 'Your commit message'".
+Git supports simple commit messages as well as detailed messages written in an editor. The most recent commit can be amended to fix mistakes or add missing changes.
 
-Commit with Extended Message:
-Open your default editor to write a more detailed commit message using "git commit".
-
-Commit All Changes:
-Stage and commit all modified files in one step using "git commit -am 'Your commit message'".
-
-Amend the Last Commit:
-Modify the most recent commit using "git commit --amend". This allows you to add forgotten changes or fix the commit message.
-
-View Commit Diff:
-Display what was changed in the last commit using "git show".`,
+Clear commit messages improve project maintainability.`,
     code: `# Basic commit
 git commit -m "Your commit message"
 
@@ -346,25 +233,9 @@ git show`
 
   "Viewing commit history": {
     title: "Viewing commit history",
-    content: `Git keeps a detailed history of all commits made to a repository. Viewing this history allows you to understand the changes made over time and who made them.
+    content: `Git maintains a detailed record of all commits in a repository. Viewing commit history helps understand project evolution and contributor activity.
 
-Basic Log:
-Display the commit history in reverse chronological order using "git log".
-
-One-line Summary:
-Display commits with one-line summaries using "git log --oneline".
-
-Detailed Log:
-Display a more detailed log with file changes using "git log -p".
-
-Specific Number of Commits:
-Display a specific number of recent commits using "git log -n <number>".
-
-Filtering by Author:
-Display commits by a specific author using "git log --author='Author Name'".
-
-Filtering by File:
-Display commits that affected a specific file using "git log -- <file_name>".`,
+History can be displayed in compact or detailed formats and filtered by author, file, or number of commits.`,
     code: `# View commit history
 git log
 
@@ -386,25 +257,9 @@ git log -- <file_name>`
 
   "Branching": {
     title: "Branching",
-    content: `Branching allows you to create separate lines of development within a Git repository. This is useful for working on new features or bug fixes without affecting the main codebase.
+    content: `Branching allows independent development within a repository. This makes it possible to work on new features or fixes without affecting the main branch.
 
-Create a New Branch:
-Create a new branch using "git branch <branch_name>".
-
-Switch to a Branch:
-Change to an existing branch using "git checkout <branch_name>" or "git switch <branch_name>".
-
-Create and Switch to a New Branch:
-Create and immediately switch to a new branch using "git checkout -b <branch_name>" or "git switch -c <branch_name>".
-
-List All Branches:
-Display all branches in the repository using "git branch".
-
-Delete a Branch:
-Remove a branch using "git branch -d <branch_name>". Use "git branch -D <branch_name>" to force delete.
-
-Rename a Branch:
-Rename a branch using "git branch -m <old_name> <new_name>".`,
+Branches can be created, switched, renamed, and deleted easily. Completed work is merged back into another branch.`,
     code: `# Create a new branch
 git branch <branch_name>
 
@@ -429,22 +284,9 @@ git branch -m <old_name> <new_name>`
 
   "Merging branches": {
     title: "Merging branches",
-    content: `Merging is the process of combining changes from different branches into one branch. It allows you to integrate new features, bug fixes, or other updates.
+    content: `Merging combines changes from one branch into another. This is commonly done when a feature or fix is ready.
 
-Basic Merge:
-Merge a specified branch into the current branch using "git merge <branch_name>".
-
-Fast-Forward Merge:
-If the current branch has not diverged, Git performs a fast-forward merge, moving the branch pointer forward.
-
-Three-Way Merge:
-If branches have diverged, Git performs a three-way merge, creating a new commit combining changes from both branches.
-
-Merge with Commit Message:
-Add a custom commit message during merge using "git merge <branch_name> -m 'Merge commit message'".
-
-View Merge History:
-Display the history of merges using "git log --merges".`,
+Git supports fast-forward merges and merge commits depending on branch history.`,
     code: `# Merge a branch
 git merge <branch_name>
 
@@ -457,22 +299,9 @@ git log --merges`
 
   "Resolving merge conflicts": {
     title: "Resolving merge conflicts",
-    content: `Merge conflicts occur when Git cannot automatically resolve differences between branches. Manual intervention is required to resolve these conflicts.
+    content: `Merge conflicts occur when Git cannot automatically combine changes. This usually happens when the same part of a file is modified in multiple branches.
 
-Identify Conflicts:
-When a conflict occurs, Git marks conflicting files and stops the merge. Check the status using "git status".
-
-Resolve Conflicts:
-Open conflicting files and look for conflict markers (<<<<<<, ======, >>>>>>). Edit the files to keep the desired changes and remove the markers.
-
-Mark Conflicts as Resolved:
-After resolving conflicts, stage the files using "git add <conflicted_file>".
-
-Complete the Merge:
-Finish the merge by committing the resolved changes using "git commit".
-
-Abort the Merge:
-If you want to cancel the merge and return to the pre-merge state, use "git merge --abort".`,
+Conflicts must be resolved manually before the merge can be completed.`,
     code: `# Identify conflicts
 git status
 
@@ -488,33 +317,17 @@ git merge --abort`
 
   "Git workflows": {
     title: "Git workflows",
-    content: `Git workflows define a standard way of using Git in a project. They help manage branches, collaborate with team members, and ensure a smooth development process.
+    content: `Git workflows define how teams structure branches and collaborate. Different workflows suit different team sizes and release strategies.
 
-Centralized Workflow:
-A simple workflow where all changes are pushed to a central repository. Suitable for small teams or solo projects.
-
-Feature Branch Workflow:
-Each new feature is developed in its own branch. Once complete, the feature is merged into the main branch, keeping the main branch stable.
-
-Gitflow Workflow:
-A comprehensive workflow with separate branches for features, releases, and hotfixes. Suitable for projects with scheduled releases.
-
-Forking Workflow:
-Each developer forks the main repository and works on their own copy. Changes are integrated back to the main repository through pull requests. Common in open-source projects.
-
-Trunk-Based Development:
-All developers commit directly to the main branch frequently. Suitable for teams with strong continuous integration practices.`,
+Choosing the right workflow improves stability, collaboration, and delivery speed.`,
     code: `# Feature Branch Workflow
 git checkout -b feature/new-feature
-# Make changes and commit
 git add .
 git commit -m "Add new feature"
 git push origin feature/new-feature
-# Create pull request on GitHub
 
 # Gitflow Workflow
 git checkout -b feature/feature-name develop
-# Make changes
 git checkout develop
 git merge feature/feature-name
 git checkout -b release/1.0.0 develop
@@ -524,25 +337,9 @@ git merge release/1.0.0`
 
   "Remote repositories": {
     title: "Remote repositories",
-    content: `Remote repositories are copies of your project hosted on a server, allowing collaboration with other developers. Common remote hosting services include GitHub, GitLab, and Bitbucket.
+    content: `Remote repositories allow developers to share code and collaborate. They are usually hosted on platforms like GitHub or GitLab.
 
-Add a Remote:
-Link a remote repository to your local repository using "git remote add <name> <url>". The default remote is typically named "origin".
-
-View Remotes:
-Display all configured remote repositories using "git remote -v".
-
-Fetch from Remote:
-Download changes from the remote repository without merging using "git fetch".
-
-Pull from Remote:
-Download and merge changes from the remote repository using "git pull".
-
-Push to Remote:
-Upload your local commits to the remote repository using "git push".
-
-Set Upstream Branch:
-Configure the remote branch for your local branch using "git push -u origin <branch_name>".`,
+Git supports adding remotes, fetching updates, pulling changes, and pushing commits.`,
     code: `# Add a remote
 git remote add origin <repository_url>
 
@@ -564,22 +361,9 @@ git push -u origin <branch_name>`
 
   "Cloning repositories": {
     title: "Cloning repositories",
-    content: `Cloning creates a complete local copy of a remote repository, including all files and commit history. This allows you to start working on a project immediately.
+    content: `Cloning creates a local copy of a remote repository including its full history.
 
-Clone a Repository:
-Create a local copy using "git clone <repository_url>".
-
-Clone into a Specific Directory:
-Clone into a specific directory using "git clone <repository_url> <directory_name>".
-
-Clone with Depth:
-Clone with limited commit history using "git clone --depth <number> <repository_url>". Useful for large repositories.
-
-Clone a Specific Branch:
-Clone only a specific branch using "git clone --branch <branch_name> <repository_url>".
-
-Verify the Clone:
-Check the cloned repository status using "cd <directory_name>" followed by "git status".`,
+Git supports cloning specific branches, limiting history depth, and cloning into custom directories.`,
     code: `# Clone a repository
 git clone <repository_url>
 
@@ -595,25 +379,9 @@ git clone --branch <branch_name> <repository_url>`
 
   "Pushing changes": {
     title: "Pushing changes",
-    content: `Pushing uploads your local commits to the remote repository, making them available to other collaborators.
+    content: `Pushing sends local commits to a remote repository so others can access them.
 
-Basic Push:
-Upload your commits to the remote repository using "git push".
-
-Push to a Specific Remote and Branch:
-Upload to a specific remote and branch using "git push <remote> <branch>".
-
-Push All Branches:
-Upload all local branches to the remote using "git push --all".
-
-Push Tags:
-Upload tags to the remote using "git push origin <tag_name>" or "git push origin --tags".
-
-Force Push:
-Overwrite remote history with local history using "git push --force". Use with caution as this can overwrite others' work.
-
-Set Upstream and Push:
-Set the upstream branch and push in one command using "git push -u origin <branch_name>".`,
+Branches and tags can be pushed, and upstream branches can be configured for convenience.`,
     code: `# Basic push
 git push
 
@@ -636,22 +404,9 @@ git push -u origin <branch_name>`
 
   "Pulling changes": {
     title: "Pulling changes",
-    content: `Pulling downloads and integrates changes from the remote repository into your local repository.
+    content: `Pulling updates your local branch with remote changes. This usually combines fetching and merging.
 
-Basic Pull:
-Download and merge remote changes using "git pull".
-
-Pull from a Specific Remote and Branch:
-Pull from a specific remote and branch using "git pull <remote> <branch>".
-
-Pull with Rebase:
-Download changes and rebase your local commits using "git pull --rebase". This creates a cleaner history than merge.
-
-Fetch Before Pull:
-Download changes without merging using "git fetch", then manually merge using "git merge".
-
-Update Tracking Branches:
-Update all remote tracking branches using "git pull --all".`,
+Git also supports rebasing during pulls for a cleaner history.`,
     code: `# Basic pull
 git pull
 
@@ -670,22 +425,9 @@ git merge origin/main`
 
   "Forking repositories": {
     title: "Forking repositories",
-    content: `Forking creates a personal copy of someone else's repository. This allows you to work independently without affecting the original project.
+    content: `Forking creates a personal copy of another repository, commonly used in open-source projects.
 
-Fork a Repository:
-Click the "Fork" button on the repository hosting platform (GitHub, GitLab, etc.) to create your own copy.
-
-Clone Your Fork:
-Create a local copy of your forked repository using "git clone <your_fork_url>".
-
-Add Upstream Remote:
-Link the original repository as "upstream" using "git remote add upstream <original_repo_url>".
-
-Fetch Updates from Upstream:
-Download updates from the original repository using "git fetch upstream".
-
-Sync Your Fork:
-Keep your fork updated with the original repository using "git merge upstream/main".`,
+Forks can be synchronized with the original repository and contribute changes back through pull requests.`,
     code: `# Clone your fork
 git clone <your_fork_url>
 
@@ -703,28 +445,9 @@ git push origin main`
 
   "Creating pull requests": {
     title: "Creating pull requests",
-    content: `Pull requests allow you to propose changes to a repository and request that they be reviewed and merged.
+    content: `Pull requests allow contributors to propose changes and request review before merging.
 
-Create a Feature Branch:
-Create and switch to a new branch for your changes using "git checkout -b feature/your-feature".
-
-Make Changes and Commit:
-Make your changes and commit them with clear, descriptive messages.
-
-Push Your Branch:
-Upload your branch to the remote repository using "git push origin feature/your-feature".
-
-Create Pull Request:
-Go to the repository on GitHub/GitLab and click "New Pull Request" or "Create Merge Request".
-
-Describe Your Changes:
-Fill in the pull request title and description, explaining what changes you made and why.
-
-Request Review:
-Assign reviewers to examine your changes before merging.
-
-Address Feedback:
-Make additional commits based on reviewer feedback, which will automatically update the pull request.`,
+Feedback can be addressed through additional commits that automatically update the request.`,
     code: `# Create and switch to feature branch
 git checkout -b feature/your-feature
 
@@ -743,28 +466,9 @@ git push origin feature/your-feature`
 
   "Git tags": {
     title: "Git tags",
-    content: `Tags mark specific points in your repository's history, typically used to mark release versions.
+    content: `Tags mark important points in repository history, most commonly releases.
 
-Create a Lightweight Tag:
-Create a simple tag using "git tag <tag_name>".
-
-Create an Annotated Tag:
-Create a tag with metadata using "git tag -a <tag_name> -m 'Tag message'".
-
-List Tags:
-Display all tags in the repository using "git tag".
-
-Push Tags:
-Upload a specific tag using "git push origin <tag_name>" or all tags using "git push origin --tags".
-
-Delete a Local Tag:
-Remove a local tag using "git tag -d <tag_name>".
-
-Delete a Remote Tag:
-Remove a remote tag using "git push origin --delete <tag_name>".
-
-Checkout a Tag:
-Switch to a specific tag using "git checkout <tag_name>".`,
+They provide stable references that can be pushed, deleted, or checked out.`,
     code: `# Create a lightweight tag
 git tag <tag_name>
 
@@ -789,25 +493,9 @@ git push origin --delete <tag_name>`
 
   "Rebasing": {
     title: "Rebasing",
-    content: `Rebasing moves or combines a sequence of commits to a new base commit. It maintains a cleaner project history compared to merging.
+    content: `Rebasing moves commits onto a new base commit to maintain a cleaner history.
 
-Basic Rebase:
-Rebase your current branch onto another branch using "git rebase <branch_name>".
-
-Interactive Rebase:
-Edit, squash, or reorder commits using "git rebase -i <commit_hash>".
-
-Rebase onto a Remote Branch:
-Rebase onto a remote branch using "git rebase origin/<branch_name>".
-
-Continue Rebase After Conflict:
-After resolving merge conflicts, continue rebasing using "git rebase --continue".
-
-Abort Rebase:
-Cancel the rebasing process using "git rebase --abort".
-
-Autosquash:
-Automatically squash commits marked with fixup or squash using "git rebase -i --autosquash".`,
+Interactive rebasing allows editing, squashing, or reordering commits.`,
     code: `# Basic rebase
 git rebase <branch_name>
 
@@ -829,25 +517,9 @@ git rebase -i --autosquash`
 
   "Undoing changes": {
     title: "Undoing changes",
-    content: `Git provides several ways to undo changes depending on when they were made.
+    content: `Git provides multiple ways to undo changes depending on the situation.
 
-Discard Unstaged Changes:
-Revert unstaged changes to a file using "git checkout -- <file>".
-
-Unstage Changes:
-Remove files from the staging area using "git reset <file>".
-
-Reset to Previous Commit:
-Reset to a previous commit and discard changes using "git reset --hard <commit_hash>".
-
-Revert a Commit:
-Create a new commit that undoes changes from a previous commit using "git revert <commit_hash>".
-
-Undo the Last Commit (Keep Changes):
-Undo the last commit while keeping changes using "git reset --soft HEAD~1".
-
-Amend the Last Commit:
-Modify the last commit using "git commit --amend".`,
+Some operations rewrite history, while others safely create new commits.`,
     code: `# Discard unstaged changes
 git checkout -- <file>
 
@@ -869,28 +541,9 @@ git commit --amend`
 
   "Git stash": {
     title: "Git stash",
-    content: `Git stash temporarily saves uncommitted changes and reverts your working directory to the last commit. This is useful when you need to switch branches without committing.
+    content: `Git stash temporarily saves uncommitted changes and restores a clean working directory.
 
-Stash Changes:
-Save uncommitted changes using "git stash".
-
-List Stashes:
-View all stashed changes using "git stash list".
-
-Apply Most Recent Stash:
-Reapply the most recent stash without removing it using "git stash apply".
-
-Apply a Specific Stash:
-Apply a specific stash using "git stash apply stash@{<number>}".
-
-Pop a Stash:
-Apply and remove a stash using "git stash pop".
-
-Drop a Stash:
-Delete a specific stash using "git stash drop stash@{<number>}".
-
-Clear All Stashes:
-Delete all stashes using "git stash clear".`,
+Stashed changes can be applied, dropped, or cleared as needed.`,
     code: `# Stash changes
 git stash
 
@@ -915,26 +568,14 @@ git stash clear`
 
   "Git hooks": {
     title: "Git hooks",
-    content: `Git hooks are scripts that run automatically at certain points in the Git workflow. They allow you to enforce rules or automate tasks.
+    content: `Git hooks are scripts that run automatically at specific points in the workflow.
 
-Common Hooks:
-- pre-commit: Runs before creating a commit. Useful for running tests or linting.
-- commit-msg: Runs after entering the commit message but before finalizing the commit.
-- pre-push: Runs before pushing to a remote repository. Useful for running tests or build tasks.
-
-Create a Hook:
-Add a script in the .git/hooks directory with the appropriate name and make it executable using "chmod +x".
-
-Example Pre-commit Hook:
-A script that checks for syntax errors in Python files before allowing a commit.
-
-Enable/Disable Hooks:
-Temporarily disable hooks using "git commit --no-verify" to bypass pre-commit hooks.`,
+They are commonly used to enforce rules or automate checks.`,
     code: `# Create pre-commit hook
 touch .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
 
-# Example pre-commit hook (Python syntax check)
+# Example pre-commit hook
 #!/bin/sh
 python -m py_compile $(git diff --cached --name-only --diff-filter=ACM | grep '.py$')
 
@@ -947,30 +588,12 @@ ls -la .git/hooks/`
 
   "Gitignore": {
     title: "Gitignore",
-    content: `A .gitignore file specifies which files and directories Git should ignore. This is useful for excluding build artifacts, logs, and environment variables from version control.
+    content: `A .gitignore file defines which files and directories Git should ignore.
 
-Create .gitignore:
-Create a file named .gitignore in the root of your repository and add patterns to ignore.
-
-Common Patterns:
-- node_modules/ - Ignore a directory
-- *.log - Ignore files with a specific extension
-- .env - Ignore specific files
-- /dist - Ignore a specific directory
-- **/*.tmp - Ignore files recursively
-
-Stop Tracking a File:
-Remove a previously committed file from tracking using "git rm --cached <file>".
-
-Ignore Already Committed Files:
-Commit the removal using "git commit -m 'Stop tracking <file>'".
-
-Global Gitignore:
-Create a global .gitignore using "git config --global core.excludesfile ~/.gitignore_global".`,
+It prevents unnecessary or sensitive files from being tracked.`,
     code: `# Create .gitignore
 touch .gitignore
 
-# Common .gitignore content
 node_modules/
 dist/
 .DS_Store
@@ -990,28 +613,9 @@ git check-ignore -v <file>`
 
   "GitLab/GitHub basics": {
     title: "GitLab/GitHub basics",
-    content: `GitHub and GitLab are platforms for hosting Git repositories and collaborating on projects.
+    content: `GitHub and GitLab host Git repositories and provide collaboration tools such as pull requests, issues, and discussions.
 
-Create a Repository:
-Click "New Repository" and fill in the repository name, description, and settings.
-
-Clone a Repository:
-Clone the repository to your local machine using "git clone <repository_url>".
-
-Add, Commit, and Push:
-Make changes, stage them with "git add .", commit with "git commit -m 'message'", and push with "git push".
-
-Create a Branch:
-Create a new branch for features using "git checkout -b feature/name".
-
-Create a Pull Request:
-Push your branch and create a pull request through the web interface to propose changes.
-
-Review and Merge:
-Team members review the pull request, discuss changes, and merge when approved.
-
-Issues and Discussions:
-Use Issues to track bugs and feature requests. Use Discussions for project questions and ideas.`,
+They support structured code review and team collaboration.`,
     code: `# Clone repository
 git clone <repository_url>
 
@@ -1032,28 +636,9 @@ git push origin --delete feature/name`
 
   "Advanced Git commands": {
     title: "Advanced Git commands",
-    content: `Advanced Git commands help with complex scenarios and repository management.
+    content: `Advanced Git commands help with debugging, recovery, and history management.
 
-Interactive Rebase:
-Edit, squash, or reorder commits using "git rebase -i <commit_hash>".
-
-Cherry-pick:
-Apply a specific commit from another branch using "git cherry-pick <commit_hash>".
-
-Bisect:
-Find the commit that introduced a bug by testing commits systematically using "git bisect start", "git bisect bad", and "git bisect good <commit_hash>".
-
-Reset:
-Reset your branch to a specific commit using "git reset --hard <commit_hash>".
-
-Filter-branch:
-Rewrite history or remove sensitive data using "git filter-branch --tree-filter 'rm -f <file>' HEAD".
-
-Reflog:
-View the reference log of your HEAD changes using "git reflog" to recover lost commits.
-
-Blame:
-Identify who made changes to specific lines using "git blame <file>".`,
+They should be used carefully, especially on shared repositories.`,
     code: `# Interactive rebase
 git rebase -i <commit_hash>
 
@@ -1079,7 +664,6 @@ git blame <file>`
   },
 };
 
-// Convert Git content to LearnLanguage format
 export const getGitLanguageContent = (): LearnLanguage => {
   return {
     id: "git",

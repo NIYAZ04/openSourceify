@@ -16,7 +16,7 @@ const footerLinks = {
 
 const socialLinks = [
   { name: "GitHub", icon: Github, href: "https://github.com" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/mir-niyazul-haque/" },
   { name: "Calendly", icon: Calendar, href: "https://calendly.com" },
 ];
 
