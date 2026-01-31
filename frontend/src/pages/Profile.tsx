@@ -27,6 +27,11 @@ export default function Profile() {
     bio: "",
     github_username: "",
   });
+  // Check if backend is available
+  const [backendAvailable, setBackendAvailable] = useState<boolean | null>(null);
+  useEffect(() => {
+    checkBackendHealth().then(setBackendAvailable);
+  }, []);
 
   if (loading) {
     return (
@@ -41,13 +46,6 @@ export default function Profile() {
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-
-  // Check if backend is available
-  const [backendAvailable, setBackendAvailable] = useState<boolean | null>(null);
-  
-  useEffect(() => {
-    checkBackendHealth().then(setBackendAvailable);
-  }, []);
 
   const handleStartEdit = () => {
     if (!profile) {

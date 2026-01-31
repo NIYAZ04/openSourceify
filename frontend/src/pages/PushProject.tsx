@@ -123,7 +123,7 @@ export default function PushProject() {
     await createProject.mutateAsync({
       project_name: data.projectName,
       github_link: data.githubLink,
-      domain: data.domain as any,
+      domain: data.domain,
       languages: data.languages,
       license: data.license,
       description: data.description,
