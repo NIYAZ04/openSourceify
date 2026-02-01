@@ -30,7 +30,7 @@ export default function Learn() {
         >
           <h1 className="text-4xl font-bold mb-4 flex items-center gap-3">
             <BookOpen className="w-10 h-10 text-primary" />
-            Learn & <span className="gradient-text">Grow</span>
+            Courses & <span className="gradient-text">Grow</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Master the fundamentals before contributing. From Git workflows to programming languages,
@@ -115,42 +115,50 @@ export default function Learn() {
             <div className="glass-card rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-6">{selectedTopic.title}</h2>
 
-              <div className="prose prose-slate max-w-none">
-                <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                  {selectedTopic.content}
-                </p>
+              {selectedTopic.image && (
+                <div className="mb-8 rounded-xl overflow-hidden shadow-md border border-border/50">
+                  <img
+                    src={selectedTopic.image}
+                    alt={selectedTopic.title}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              )}
 
-                {selectedTopic.code && (
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Example</h3>
-                    <div className="relative rounded-xl overflow-hidden">
-                      <div className="absolute top-0 left-0 right-0 h-10 bg-slate-900 flex items-center px-4">
-                        <div className="flex gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                          <div className="w-3 h-3 rounded-full bg-green-500" />
-                        </div>
-                        <span className="ml-4 text-xs text-muted-foreground font-mono">
-                          {selectedLanguage.name.toLowerCase()}.{selectedLanguage.id === "git"
-                            ? "sh"
-                            : selectedLanguage.id === "html"
-                              ? "html"
-                              : selectedLanguage.id === "cpp"
-                                ? "cpp"
-                                : selectedLanguage.id === "kubernetes"
-                                  ? "yaml"
-                                  : "js"}
-                        </span>
-                      </div>
-                      <pre className="bg-slate-950 text-slate-50 p-6 pt-14 overflow-x-auto scrollbar-thin">
-                        <code className="text-sm font-mono leading-relaxed">
-                          {selectedTopic.code}
-                        </code>
-                      </pre>
-                    </div>
-                  </div>
-                )}
+              <div className="text-muted-foreground text-lg leading-relaxed mb-8 whitespace-pre-wrap">
+                {selectedTopic.content}
               </div>
+
+              {selectedTopic.code && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Example</h3>
+                  <div className="relative rounded-xl overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-10 bg-slate-900 flex items-center px-4">
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                        <div className="w-3 h-3 rounded-full bg-green-500" />
+                      </div>
+                      <span className="ml-4 text-xs text-muted-foreground font-mono">
+                        {selectedLanguage.name.toLowerCase()}.{selectedLanguage.id === "git"
+                          ? "sh"
+                          : selectedLanguage.id === "html"
+                            ? "html"
+                            : selectedLanguage.id === "cpp"
+                              ? "cpp"
+                              : selectedLanguage.id === "kubernetes"
+                                ? "yaml"
+                                : "js"}
+                      </span>
+                    </div>
+                    <pre className="bg-slate-950 text-slate-50 p-6 pt-14 overflow-x-auto scrollbar-thin">
+                      <code className="text-sm font-mono leading-relaxed">
+                        {selectedTopic.code}
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>

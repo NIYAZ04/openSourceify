@@ -10,8 +10,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 const navLinks = [
   { name: "Home", path: "/", icon: Home },
   { name: "Projects", path: "/projects", icon: Rocket },
-  { name: "Learn", path: "/learn", icon: BookOpen },
-  { name: "Contact", path: "/contact", icon: Mail },
+  { name: "Courses", path: "/learn", icon: BookOpen },
 ];
 
 export default function Navbar() {

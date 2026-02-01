@@ -5,7 +5,7 @@ const footerLinks = {
   platform: [
     { name: "About Us", path: "/about" },
     { name: "Projects", path: "/projects" },
-    { name: "Learn", path: "/learn" },
+    { name: "Courses", path: "/learn" },
     { name: "Contact", path: "/contact" },
   ],
   legal: [

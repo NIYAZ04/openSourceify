@@ -40,6 +40,7 @@ export interface LearnTopic {
   title: string;
   content: string;
   code?: string;
+  image?: string;
 }
 
 export interface LearnLanguage {

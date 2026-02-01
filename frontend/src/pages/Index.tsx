@@ -34,7 +34,7 @@ const features = [
   },
   {
     icon: BookOpen,
-    title: "Learn & Grow",
+    title: "Courses & Grow",
     description: "Access tutorials and guides to level up your skills. From Git basics to advanced workflows.",
   },
 ];
@@ -57,7 +57,7 @@ const testimonials = [
     id: "3",
     name: "Aisha Patel",
     role: "ML Engineer",
-    comment: "The Learn section helped me understand Git workflows before making my first PR. Now I'm a maintainer of 2 projects!",
+    comment: "The Courses section helped me understand Git workflows before making my first PR. Now I'm a maintainer of 2 projects!",
   },
   {
     id: "4",
@@ -93,7 +93,7 @@ export default function Index() {
   const trendingProjects = [...allProjects]
     .sort((a, b) => b.upvotes_count - a.upvotes_count)
     .slice(0, 3);
-  
+
   const recentProjects = [...allProjects]
     .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
     .slice(0, 3);
@@ -135,7 +135,7 @@ export default function Index() {
               variants={fadeInUp}
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
             >
-              The community-driven platform where developers discover, publish, and collaborate on open-source projects. 
+              The community-driven platform where developers discover, publish, and collaborate on open-source projects.
               Find your next contribution or share your creation with the world.
             </motion.p>
 

@@ -54,11 +54,11 @@ export const topicContentsOfJavaScript: {
     JavaScript is versatile and beginner-friendly. With more experience, you can build games, animated 2D and 3D graphics, comprehensive database-driven apps, and much more!
     
     Key Features of JavaScript:
-    1. **Lightweight**: JavaScript is designed to be easy to use and integrate seamlessly into web pages.
-    2. **Interpreted**: JavaScript code can be executed directly by the browser without the need for prior compilation.
-    3. **Object-Oriented**: JavaScript supports object-oriented programming concepts such as inheritance and encapsulation.
-    4. **First-Class Functions**: Functions in JavaScript are treated as first-class citizens, allowing them to be assigned to variables, passed as arguments, and returned from other functions.
-    5. **Event-Driven**: JavaScript is particularly well-suited for creating interactive web pages that respond to user actions, such as clicks and key presses.
+    1. Lightweight: JavaScript is designed to be easy to use and integrate seamlessly into web pages.
+    2. Interpreted: JavaScript code can be executed directly by the browser without the need for prior compilation.
+    3. Object-Oriented: JavaScript supports object-oriented programming concepts such as inheritance and encapsulation.
+    4. First-Class Functions: Functions in JavaScript are treated as first-class citizens, allowing them to be assigned to variables, passed as arguments, and returned from other functions.
+    5. Event-Driven: JavaScript is particularly well-suited for creating interactive web pages that respond to user actions, such as clicks and key presses.
     
     Use Cases of JavaScript:
     - Creating interactive web pages
@@ -100,7 +100,7 @@ export const topicContentsOfJavaScript: {
     content: `
     JavaScript syntax is the set of rules that define a correctly structured JavaScript program. A JavaScript program is a list of programming statements, where each statement is an instruction to be executed by the browser.
 
-    **Example of Basic Syntax and Structure:**
+    Example of Basic Syntax and Structure:
     - Declaring a variable
     - Using an if statement
     - Creating a function
@@ -153,17 +153,16 @@ export const topicContentsOfJavaScript: {
 
 "Data types and variables": {
     title: "Data types and variables",
-    content: 
-    `JavaScript supports various data types that allow you to store different kinds of values. Here are the primary data types in JavaScript:
+    content: `JavaScript supports various data types that allow you to store different kinds of values. Here are the primary data types in JavaScript:
 
-    1. **Number**: Represents both integer and floating-point numbers.
-    2. **String**: Represents sequences of characters enclosed in single quotes ('') or double quotes ("").
-    3. **Boolean**: Represents logical values: true and false.
-    4. **Undefined**: Represents a variable that has been declared but not yet assigned a value.
-    5. **Null**: Represents the intentional absence of any object value.
-    6. **Object**: Represents collections of key-value pairs.
-    7. **Symbol**: Represents a unique and immutable primitive value and may be used as the key of an object property.
-    8. **BigInt**: Represents whole numbers larger than Number.MAX_SAFE_INTEGER.
+    1. Number: Represents both integer and floating-point numbers.
+    2. String: Represents sequences of characters enclosed in single quotes ('') or double quotes ("").
+    3. Boolean: Represents logical values: true and false.
+    4. Undefined: Represents a variable that has been declared but not yet assigned a value.
+    5. Null: Represents the intentional absence of any object value.
+    6. Object: Represents collections of key-value pairs.
+    7. Symbol: Represents a unique and immutable primitive value and may be used as the key of an object property.
+    8. BigInt: Represents whole numbers larger than Number.MAX_SAFE_INTEGER.
 
     Variables in JavaScript can be declared using the var, let, and const keywords:
 
@@ -223,8 +222,7 @@ console.log(bigIntNumber); // Outputs: 1234567890123456789012345678901234567890n
 
   "Operators": {
     title: "Operators",
-    content: 
-    `Operators in JavaScript are symbols used to perform operations on variables and values. They are classified into different types based on the operation they perform. Common types of operators include arithmetic, comparison, logical, assignment, and bitwise operators.
+    content: `Operators in JavaScript are symbols used to perform operations on variables and values. They are classified into different types based on the operation they perform. Common types of operators include arithmetic, comparison, logical, assignment, and bitwise operators.
 
     Examples:
 
@@ -296,12 +294,12 @@ console.log(remainder); // Outputs: 1
     content: `
 Control flow in JavaScript refers to the order in which the statements in a script are executed. JavaScript provides several control flow statements to manage the execution flow of a program:
 
-1. **Conditional Statements**: These are used to perform different actions based on different conditions.
-   - **if**: Executes a block of code if a specified condition is true.
-   - **else**: Executes a block of code if the same condition is false.
-   - **else if**: Specifies a new condition to test if the first condition is false.
+1. Conditional Statements: These are used to perform different actions based on different conditions.
+   - if: Executes a block of code if a specified condition is true.
+   - else: Executes a block of code if the same condition is false.
+   - else if: Specifies a new condition to test if the first condition is false.
    
-2. **Switch Statement**: Used to perform different actions based on different conditions. It evaluates an expression, matching the expression's value to a case clause, and executes statements associated with that case.
+2. Switch Statement: Used to perform different actions based on different conditions. It evaluates an expression, matching the expression's value to a case clause, and executes statements associated with that case.
  
 `,
     "code": 
@@ -369,9 +367,9 @@ console.log(dayName); // Outputs: Tuesday
   "for loop": {
     "title": "for loop",
     content: `
-The **for loop** is used to execute a block of code a certain number of times. It is typically used when the number of iterations is known before the loop starts.
+The for loop is used to execute a block of code a certain number of times. It is typically used when the number of iterations is known before the loop starts.
 
-**Syntax:**
+Syntax:
 \`\`\`javascript
 for (initialization; condition; increment) {
   // code to be executed
@@ -408,9 +406,9 @@ document.getElementById("demo").innerHTML = text;
   "while loop": {
     title: "while loop",
     content: `
-The **while loop** is used to execute a block of code as long as a specified condition is true. It is generally used when the number of iterations is not known and the loop should continue until a certain condition is met.
+The while loop is used to execute a block of code as long as a specified condition is true. It is generally used when the number of iterations is not known and the loop should continue until a certain condition is met.
 
-**Syntax:**
+Syntax:
 \`\`\`javascript
 while (condition) {
   // code to be executed
@@ -449,9 +447,9 @@ document.getElementById("demo").innerHTML = text;
   "do while loop": {
     title: "do while loop",
     content: `
-The **do...while loop** is similar to the while loop, but it guarantees that the block of code will be executed at least once before the condition is tested. This is useful when you want the code to run at least once, regardless of the condition.
+The do...while loop is similar to the while loop, but it guarantees that the block of code will be executed at least once before the condition is tested. This is useful when you want the code to run at least once, regardless of the condition.
 
-**Syntax:**
+Syntax:
 \`\`\`javascript
 do {
   // code to be executed
@@ -490,9 +488,9 @@ document.getElementById("demo").innerHTML = text;
   "Functions": {
     title: "Functions",
     content: `
-**Functions** in JavaScript are blocks of code designed to perform a particular task. Functions are executed when they are called. They can accept parameters, perform operations, and return a result.
+Functions in JavaScript are blocks of code designed to perform a particular task. Functions are executed when they are called. They can accept parameters, perform operations, and return a result.
 
-**Syntax:**
+Syntax:
 \`\`\`javascript
 function functionName(parameters) {
   // code to be executed
@@ -539,29 +537,29 @@ document.getElementById("demo").innerHTML = "The result is: " + result;
   Arrays: {
     title: "Arrays",
     content: `
-**Arrays** in JavaScript are used to store multiple values in a single variable. They are one of the most commonly used data structures in JavaScript, allowing you to organize and manipulate collections of data.
+Arrays in JavaScript are used to store multiple values in a single variable. They are one of the most commonly used data structures in JavaScript, allowing you to organize and manipulate collections of data.
 
-**Key Characteristics of Arrays:**
-1. **Indexed:** Arrays are zero-based, meaning the first element is accessed at index 0, the second at index 1, and so on.
-2. **Dynamic Size:** Unlike some other programming languages, JavaScript arrays can grow and shrink dynamically.
-3. **Heterogeneous:** Arrays can contain elements of different types, including numbers, strings, objects, and even other arrays.
+Key Characteristics of Arrays:
+1. Indexed: Arrays are zero-based, meaning the first element is accessed at index 0, the second at index 1, and so on.
+2. Dynamic Size: Unlike some other programming languages, JavaScript arrays can grow and shrink dynamically.
+3. Heterogeneous: Arrays can contain elements of different types, including numbers, strings, objects, and even other arrays.
 
-**Basic Array Operations:**
-1. **Creating an Array:**
+Basic Array Operations:
+1. Creating an Array:
    Arrays can be created using array literals or the Array constructor.
    - Literal: let fruits = ["apple", "banana", "cherry"];
    - Constructor: let fruits = new Array("apple", "banana", "cherry");
 
-2. **Accessing Elements:**
+2. Accessing Elements:
    Access array elements using their index. For example, fruits[0] returns "apple".
 
-3. **Modifying Elements:**
+3. Modifying Elements:
    You can modify an element by assigning a new value to a specific index, like fruits[1] = "blueberry";.
 
-4. **Array Methods:**
+4. Array Methods:
    Arrays come with built-in methods to perform common operations such as push(), pop(), shift(), unshift(), slice(), splice(), and more.
 
-**Example:**
+Example:
 The following example demonstrates creating an array, accessing its elements, and using some array methods.
     `,
     code: 
@@ -609,30 +607,30 @@ console.log("Updated fruits array:", fruits);
 Objects: {
   title: "Objects",
   content: `
-**Objects** in JavaScript are collections of key-value pairs where each key (or property) is a string (or Symbol) and the value can be any data type, including other objects. Objects are a fundamental aspect of JavaScript and are used to store and manage data.
+Objects in JavaScript are collections of key-value pairs where each key (or property) is a string (or Symbol) and the value can be any data type, including other objects. Objects are a fundamental aspect of JavaScript and are used to store and manage data.
 
-**Key Characteristics of Objects:**
-1. **Key-Value Pairs:** Each object consists of key-value pairs. The key is a string (or Symbol), and the value can be of any data type.
-2. **Dynamic Properties:** Properties of an object can be added, modified, or deleted dynamically.
-3. **Methods:** Objects can have functions as their values. These functions are called methods.
+Key Characteristics of Objects:
+1. Key-Value Pairs: Each object consists of key-value pairs. The key is a string (or Symbol), and the value can be of any data type.
+2. Dynamic Properties: Properties of an object can be added, modified, or deleted dynamically.
+3. Methods: Objects can have functions as their values. These functions are called methods.
 
-**Basic Object Operations:**
-1. **Creating an Object:**
+Basic Object Operations:
+1. Creating an Object:
  Objects can be created using object literals or the Object constructor.
  - Literal: let person = { "name": "Alice", "age": 30 };
  - Constructor: let person = new Object(); person["name"] = "Alice"; person["age"] = 30;
 
-2. **Accessing Properties:**
+2. Accessing Properties:
  Properties can be accessed using dot notation or bracket notation. For example, person["name"] or person["age"].
 
-3. **Modifying Properties:**
+3. Modifying Properties:
  You can modify an object's properties by assigning new values to them, like person["age"] = 31;.
 
-4. **Adding and Deleting Properties:**
+4. Adding and Deleting Properties:
  - Add: person["email"] = "alice@example.com";
  - Delete: delete person["age"];
 
-**Example:**
+Example:
 The following example demonstrates creating an object, accessing its properties, and using methods.
 
   `,
@@ -730,30 +728,30 @@ console.log("Email:", person["email"]);
 "Strings" :{
 title: "Strings",
 content: `
-**Strings** in JavaScript are sequences of characters used to represent text. They are a fundamental data type in JavaScript and are enclosed in double quotes ("") or single quotes (''). 
+Strings in JavaScript are sequences of characters used to represent text. They are a fundamental data type in JavaScript and are enclosed in double quotes ("") or single quotes (''). 
 
-**Key Characteristics of Strings:**
-1. **Immutable:** Strings are immutable, meaning that once created, their values cannot be changed. Operations on strings result in the creation of new strings.
-2. **Index-Based:** Each character in a string has a specific index, starting from 0 for the first character.
-3. **String Methods:** JavaScript provides numerous built-in methods for manipulating and inspecting strings, such as length, slice, substring, and more.
+Key Characteristics of Strings:
+1. Immutable: Strings are immutable, meaning that once created, their values cannot be changed. Operations on strings result in the creation of new strings.
+2. Index-Based: Each character in a string has a specific index, starting from 0 for the first character.
+3. String Methods: JavaScript provides numerous built-in methods for manipulating and inspecting strings, such as length, slice, substring, and more.
 
-**Basic String Operations:**
-1. **Creating a String:**
+Basic String Operations:
+1. Creating a String:
  Strings can be created using double quotes, single quotes, or template literals (using backticks).
  - Double Quotes: let greeting = "Hello, World!";
  - Single Quotes: let greeting = 'Hello, World!';
  - Template Literals: let greeting = Hello, World!;
 
-2. **Accessing Characters:**
+2. Accessing Characters:
  Access individual characters using bracket notation: let firstChar = greeting[0]; // 'H'
 
-3. **Modifying Strings:**
+3. Modifying Strings:
  Since strings are immutable, modifying them involves creating new strings based on the original: let newGreeting = greeting.replace("World", "JavaScript");
 
-4. **String Methods:**
+4. String Methods:
  Common methods include toUpperCase(), toLowerCase(), trim(), charAt(), indexOf(), and concat().
 
-**Example:**
+Example:
 The following example demonstrates basic string operations and methods.
 
 `,
@@ -824,19 +822,19 @@ console.log("Modified greeting:", newGreeting);
 "Input/output": {
     title: "Input/output",
     content: `
-**Input and output operations** are essential for interacting with users and handling data in JavaScript. These operations allow you to receive input from users and display information back to them.
+Input and output operations are essential for interacting with users and handling data in JavaScript. These operations allow you to receive input from users and display information back to them.
 
-**Key Aspects of Input/Output in JavaScript:**
-1. **Output Operations:**
+Key Aspects of Input/Output in JavaScript:
+1. Output Operations:
    - console.log(): This method is used to print messages to the console, which is useful for debugging and logging information.
    - document.write(): This method writes directly to the HTML document. It's less commonly used in modern web development because it can overwrite the entire document content if used after the page has loaded.
    - innerHTML: This property allows you to update the content of HTML elements dynamically, which is commonly used to display results or interact with users.
 
-2. **Input Operations:**
+2. Input Operations:
    - prompt(): This method displays a dialog box that prompts the user to enter input. The value entered by the user is returned as a string.
    - Form Inputs: HTML forms can be used to gather user input through various elements like text fields, checkboxes, radio buttons, and submit buttons.
 
-**Example:**
+Example:
 The following example demonstrates basic input and output operations using console.log(), document.write(), and prompt().
 
 `,
@@ -888,18 +886,18 @@ console.log("User's name:", userName);
   "Basic file handling": {
     title: "Basic file handling",
     content: `
-**Basic File Handling** in JavaScript is primarily concerned with reading and writing files. However, JavaScript running in a browser has limited capabilities for direct file manipulation due to security reasons. File handling is more commonly performed in Node.js, a server-side JavaScript environment.
+Basic File Handling in JavaScript is primarily concerned with reading and writing files. However, JavaScript running in a browser has limited capabilities for direct file manipulation due to security reasons. File handling is more commonly performed in Node.js, a server-side JavaScript environment.
 
-**Key Concepts:**
-1. **Reading Files:**
+Key Concepts:
+1. Reading Files:
    - In a browser, you can use the File API to handle file input from users. This involves using HTML file input elements and JavaScript to read the file's content.
    - In Node.js, you can use the "fs" (file system) module to read files synchronously or asynchronously.
 
-2. **Writing Files:**
+2. Writing Files:
    - In a browser, you cannot write files directly to the user's file system for security reasons. Instead, you can create downloadable links for files generated in the browser.
    - In Node.js, you can use the "fs" module to write data to files on the server.
 
-**Example in Node.js:**
+Example in Node.js:
 The following example demonstrates basic file handling operations such as reading and writing files using the "fs" module in Node.js.
 
 `,
@@ -941,28 +939,28 @@ fs.readFile('example.txt', 'utf8', (err, data) => {
   "Classes and objects": {
     title: "Classes and objects",
     content: `
-**Classes and Objects** in JavaScript are used to create and manage complex data structures. They are a fundamental part of object-oriented programming (OOP), which allows you to model real-world entities and their behaviors.
+Classes and Objects in JavaScript are used to create and manage complex data structures. They are a fundamental part of object-oriented programming (OOP), which allows you to model real-world entities and their behaviors.
 
-**Key Concepts:**
-1. **Classes:**
+Key Concepts:
+1. Classes:
    - A class is a blueprint for creating objects. It defines a set of properties and methods that the created objects will have.
    - In JavaScript, classes are defined using the class keyword. A class can include a constructor method for initializing new objects and other methods to define behaviors.
 
-2. **Objects:**
+2. Objects:
    - An object is an instance of a class. It holds data in the form of key-value pairs and can use the methods defined in its class.
    - Objects can be created using the new keyword followed by the class name.
 
-**Basic Operations:**
-1. **Creating a Class:**
+Basic Operations:
+1. Creating a Class:
    - Use the class keyword to define a class and the constructor method to initialize its properties.
 
-2. **Creating an Object:**
+2. Creating an Object:
    - Instantiate an object using the new keyword followed by the class name.
 
-3. **Accessing Properties and Methods:**
+3. Accessing Properties and Methods:
    - Use dot notation to access and modify properties and call methods on an object.
 
-**Example:**
+Example:
 The following example demonstrates defining a class, creating an object, and using its properties and methods.
 
 `,
@@ -1001,19 +999,19 @@ console.log(person1.getAge()); // Outputs: I am 30 years old
 "Constructors and destructors": {
     title: "Constructors and destructors",
     content: `
-**Constructors and Destructors** are special methods in object-oriented programming that manage object initialization and cleanup.
+Constructors and Destructors are special methods in object-oriented programming that manage object initialization and cleanup.
 
-**Constructors:**
+Constructors:
 - A constructor is a special method that is automatically called when an instance of a class is created.
 - Its primary purpose is to initialize the object's properties.
 - In JavaScript, constructors are defined using the constructor keyword within a class.
 
-**Destructors:**
+Destructors:
 - A destructor is a special method that is automatically called when an object is destroyed.
 - It is used to perform cleanup operations, such as releasing resources or performing finalization tasks.
 - JavaScript does not have a built-in destructor mechanism like some other languages, but you can simulate cleanup using finalization techniques such as event listeners or weak references.
 
-**Example:**
+Example:
 The following example demonstrates the use of a constructor to initialize an object.
 
 `,
@@ -1040,13 +1038,13 @@ console.log(myCar.displayInfo()); // Outputs: Car: Toyota Corolla
   "Function overloading": {
     title: "Function overloading",
     content: `
-**Function Overloading** refers to the ability to define multiple functions with the same name but different parameters. This allows for different implementations based on the provided arguments.
+Function Overloading refers to the ability to define multiple functions with the same name but different parameters. This allows for different implementations based on the provided arguments.
 
-**In JavaScript:**
+In JavaScript:
 - JavaScript does not support function overloading in the traditional sense. Instead, you can use a single function with conditional logic to handle different parameter types or counts.
 - You can check the number and types of arguments within the function and execute different code paths accordingly.
 
-**Example:**
+Example:
 The following example demonstrates a function that simulates overloading by handling different numbers of arguments.
 
 `,
@@ -1069,18 +1067,18 @@ console.log(greet('Alice', 'Good morning')); // Outputs: Good morning, Alice
   "Modules": {
     title: "Modules",
     content: `
-**Modules** in JavaScript allow you to break up your code into smaller, reusable pieces. Modules help in organizing code into separate files and namespaces, improving maintainability and readability.
+Modules in JavaScript allow you to break up your code into smaller, reusable pieces. Modules help in organizing code into separate files and namespaces, improving maintainability and readability.
 
-**Key Concepts:**
-1. **Importing and Exporting:**
-   - **Exporting:** You can export functions, objects, or primitives from a module using the export keyword. 
-   - **Importing:** You can import functions, objects, or primitives into another module using the import keyword.
+Key Concepts:
+1. Importing and Exporting:
+   - Exporting: You can export functions, objects, or primitives from a module using the export keyword. 
+   - Importing: You can import functions, objects, or primitives into another module using the import keyword.
 
-2. **Types of Exports:**
-   - **Named Exports:** Export multiple values from a module. Each value is exported with a specific name.
-   - **Default Exports:** Export a single value or function as the default export of a module. 
+2. Types of Exports:
+   - Named Exports: Export multiple values from a module. Each value is exported with a specific name.
+   - Default Exports: Export a single value or function as the default export of a module. 
 
-**Example:**
+Example:
 The following example demonstrates exporting and importing a function.
 
 `,
@@ -1583,7 +1581,7 @@ console.log("Sum:", sum); // 15`
 
    "ES6 features": {
     title: "ES6 features",
-    content:`ES6 (ECMAScript 2015) introduced several new features and improvements to JavaScript, making code more concise and easier to work with.
+    content: `ES6 (ECMAScript 2015) introduced several new features and improvements to JavaScript, making code more concise and easier to work with.
 
 Key ES6 Features:
 - Let and Const: Block-scoped variables, const for constants
@@ -1673,7 +1671,7 @@ console.log(dog.bark()); // The dog barks.`
 
  "Prototypes and inheritance": {
     title: "Prototypes and inheritance",
-    content:`In JavaScript, prototypes and inheritance are core concepts enabling objects to inherit properties and methods from other objects.
+    content: `In JavaScript, prototypes and inheritance are core concepts enabling objects to inherit properties and methods from other objects.
 
 Prototypes:
 - Every JavaScript object has a prototype that serves as a template for creating new objects
