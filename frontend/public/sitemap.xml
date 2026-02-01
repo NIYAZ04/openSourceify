@@ -11,23 +11,28 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://opensourceify.in/learn</loc>
+    <loc>https://opensourceify.in/courses</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://opensourceify.in/push</loc>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://opensourceify.in/contact</loc>
+    <priority>0.4</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://opensourceify.in/privacy</loc>
-    <priority>0.3</priority>
+    <priority>0.1</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://opensourceify.in/terms</loc>
-    <priority>0.3</priority>
+    <priority>0.1</priority>
     <changefreq>yearly</changefreq>
   </url>
 </urlset>

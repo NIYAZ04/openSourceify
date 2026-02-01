@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import Layout from "@/components/layout/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -34,7 +35,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const result = contactSchema.safeParse(form);
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof ContactForm, string>> = {};
@@ -47,21 +48,41 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. We'll get back to you soon.",
-    });
-    
-    setTimeout(() => {
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          to_name: "OpenSourceify Admin",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setIsSuccess(true);
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. We'll get back to you soon.",
+      });
+
       setForm({ name: "", email: "", message: "" });
-      setIsSuccess(false);
-    }, 3000);
+
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        variant: "destructive",
+        title: "Error sending message",
+        description: "Something went wrong. Please try again later or check your network.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
