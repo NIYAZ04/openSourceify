@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { signUp, signIn, signOut, getSession } from "../controllers/auth.controller";
+import { signUp, signIn, signOut, getSession, forgotPassword, updatePassword } from "../controllers/auth.controller";
 import { authMiddleware } from "../middleware/auth";
 
 const router = Router();
@@ -15,5 +15,11 @@ router.post("/signout", signOut);
 
 // Get current session (optional auth middleware)
 router.get("/session", getSession);
+
+// Forgot password - sends reset email
+router.post("/forgot-password", forgotPassword);
+
+// Reset password - updates password (requires valid session from email link)
+router.post("/reset-password", authMiddleware, updatePassword);
 
 export default router;

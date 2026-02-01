@@ -12,6 +12,7 @@ import Layout from "@/components/layout/Layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCreateProject } from "@/hooks/useProjects";
 import { z } from "zod";
+import { cn } from "@/lib/utils";
 
 const domains = [
   { value: "web", label: "Web" },
@@ -35,8 +36,12 @@ const licenses = [
 
 const commonLanguages = [
   "JavaScript", "TypeScript", "Python", "Java", "Kotlin", "Swift",
-  "Go", "Rust", "C++", "C#", "Ruby", "PHP", "Dart", "React",
-  "Vue.js", "Angular", "Node.js", "Flutter", "TensorFlow", "PyTorch",
+  "Go", "Rust", "C++", "C#", "Ruby", "PHP", "Dart", "Next.js",
+  "React", "Vue.js", "Nuxt.js", "Angular", "Svelte", "Remix",
+  "Node.js", "NestJS", "Express", "Tailwind CSS", "Flutter",
+  "React Native", "PostgreSQL", "MongoDB", "Redis", "Supabase",
+  "Firebase", "Docker", "Kubernetes", "AWS", "GraphQL",
+  "TensorFlow", "PyTorch", "Django", "Flask", "Spring Boot", "Laravel",
 ];
 
 const projectSchema = z.object({
@@ -45,8 +50,8 @@ const projectSchema = z.object({
   domain: z.string().min(1, "Please select a domain"),
   languages: z.array(z.string()).min(1, "Select at least one language/technology"),
   license: z.string().min(1, "Please select a license"),
-  description: z.string().min(20, "Description must be at least 20 characters").max(1000, "Description too long"),
-  backstory: z.string().max(2000, "Backstory too long").optional(),
+  description: z.string().min(20, "Description must be at least 20 characters").max(300, "Description cannot exceed 300 characters"),
+  backstory: z.string().max(300, "Backstory cannot exceed 300 characters").optional(),
   willPay: z.boolean(),
   amount: z.number().optional(),
 });
@@ -227,11 +232,10 @@ export default function PushProject() {
                     key={lang}
                     type="button"
                     onClick={() => toggleLanguage(lang)}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                      formData.languages.includes(lang)
-                        ? "gradient-primary text-primary-foreground"
-                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                    }`}
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${formData.languages.includes(lang)
+                      ? "gradient-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      }`}
                   >
                     {lang}
                   </button>
@@ -296,40 +300,50 @@ export default function PushProject() {
             </div>
 
             {/* Description */}
-            <div className="space-y-2">
+            <div className="flex items-center justify-between mb-2">
               <Label htmlFor="description" className="flex items-center gap-2">
                 <FileText className="w-4 h-4 text-muted-foreground" />
                 Description
               </Label>
-              <Textarea
-                id="description"
-                placeholder="Describe your project, its features, and what contributors can work on..."
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                rows={4}
-              />
-              {errors.description && (
-                <p className="text-sm text-destructive">{errors.description}</p>
-              )}
+              <span className={cn("text-[10px] font-bold px-2 py-0.5 rounded-full", formData.description.length >= 300 ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary")}>
+                {formData.description.length}/300
+              </span>
             </div>
+            <Textarea
+              id="description"
+              placeholder="Describe your project, its features, and what contributors can work on..."
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              rows={4}
+              maxLength={300}
+              className={cn(formData.description.length >= 300 && "border-destructive focus-visible:ring-destructive")}
+            />
+            {errors.description && (
+              <p className="text-sm text-destructive font-medium">{errors.description}</p>
+            )}
 
             {/* Backstory */}
-            <div className="space-y-2">
+            <div className="flex items-center justify-between mb-2">
               <Label htmlFor="backstory" className="flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-muted-foreground" />
                 Backstory (Optional)
               </Label>
-              <Textarea
-                id="backstory"
-                placeholder="Share the story behind your project - why you started it, your vision..."
-                value={formData.backstory}
-                onChange={(e) => setFormData({ ...formData, backstory: e.target.value })}
-                rows={3}
-              />
-              {errors.backstory && (
-                <p className="text-sm text-destructive">{errors.backstory}</p>
-              )}
+              <span className={cn("text-[10px] font-bold px-2 py-0.5 rounded-full", formData.backstory.length >= 300 ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary")}>
+                {formData.backstory.length}/300
+              </span>
             </div>
+            <Textarea
+              id="backstory"
+              placeholder="Share the story behind your project - why you started it, your vision..."
+              value={formData.backstory}
+              onChange={(e) => setFormData({ ...formData, backstory: e.target.value })}
+              rows={3}
+              maxLength={300}
+              className={cn(formData.backstory.length >= 300 && "border-destructive focus-visible:ring-destructive")}
+            />
+            {errors.backstory && (
+              <p className="text-sm text-destructive font-medium">{errors.backstory}</p>
+            )}
 
             <Button
               type="submit"

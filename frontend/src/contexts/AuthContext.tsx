@@ -12,6 +12,8 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
+  forgotPassword: (email: string) => Promise<{ error: Error | null }>;
+  resetPassword: (password: string) => Promise<{ error: Error | null }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -24,44 +26,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [backendAvailable, setBackendAvailable] = useState<boolean | null>(null);
 
   const fetchProfile = async (userId: string) => {
-    // Check backend availability first
-    const isBackendAvailable = await checkBackendHealth();
-    setBackendAvailable(isBackendAvailable);
-
-    if (!isBackendAvailable) {
-      console.error("Backend is not available. Cannot fetch profile.");
-      setProfile(null);
-      return;
-    }
-
     try {
       const data = await profilesApi.get(userId);
-      if (data) {
-        setProfile(data);
-      } else {
-        setProfile(null);
-      }
+      setProfile(data || null);
     } catch (error) {
       console.error("Error fetching profile:", error);
       setProfile(null);
-      // If backend is unavailable, clear profile to prevent showing stale data
-      const isBackendAvailable = await checkBackendHealth();
-      if (!isBackendAvailable) {
-        setProfile(null);
-      }
     }
   };
 
   const refreshProfile = async () => {
     if (user) {
-      const isBackendAvailable = await checkBackendHealth();
-      setBackendAvailable(isBackendAvailable);
-      if (isBackendAvailable) {
-        await fetchProfile(user.id);
-      } else {
-        setProfile(null);
-        toast.error("Backend server is not available. Cannot refresh profile.");
-      }
+      await fetchProfile(user.id);
     }
   };
 
@@ -90,14 +66,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Try to get session from backend
       try {
         const { user: sessionUser, session: sessionData } = await authApi.getSession();
-        
+
         if (sessionUser && sessionData) {
           setUser(sessionUser);
           setSession(sessionData);
           // Store in localStorage
           localStorage.setItem("auth_token", sessionData.access_token);
           localStorage.setItem("auth_user", JSON.stringify(sessionUser));
-          
+
           // Fetch profile
           await fetchProfile(sessionUser.id);
         } else {
@@ -136,17 +112,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     try {
       const { user: newUser, session: newSession } = await authApi.signUp(email, password, fullName);
-      
+
       // Store in localStorage
       localStorage.setItem("auth_token", newSession.access_token);
       localStorage.setItem("auth_user", JSON.stringify(newUser));
-      
+
       setUser(newUser);
       setSession(newSession);
-      
+
       // Fetch profile
       await fetchProfile(newUser.id);
-      
+
       return { error: null };
     } catch (error) {
       const err = error instanceof Error ? error : new Error("Failed to sign up");
@@ -167,17 +143,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     try {
       const { user: sessionUser, session: sessionData } = await authApi.signIn(email, password);
-      
+
       // Store in localStorage
       localStorage.setItem("auth_token", sessionData.access_token);
       localStorage.setItem("auth_user", JSON.stringify(sessionUser));
-      
+
       setUser(sessionUser);
       setSession(sessionData);
-      
+
       // Fetch profile
       await fetchProfile(sessionUser.id);
-      
+
       return { error: null };
     } catch (error) {
       const err = error instanceof Error ? error : new Error("Failed to sign in");
@@ -200,6 +176,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const forgotPassword = async (email: string) => {
+    try {
+      await authApi.forgotPassword(email);
+      return { error: null };
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error("Failed to send reset link");
+      return { error: err };
+    }
+  };
+
+  const resetPassword = async (password: string) => {
+    try {
+      await authApi.resetPassword(password);
+      return { error: null };
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error("Failed to reset password");
+      return { error: err };
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -211,6 +207,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         signIn,
         signOut,
         refreshProfile,
+        forgotPassword,
+        resetPassword,
       }}
     >
       {children}

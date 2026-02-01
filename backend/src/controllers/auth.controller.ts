@@ -53,8 +53,8 @@ export const signUp = async (req: AuthRequest, res: Response) => {
     });
 
     if (signInError || !signInData.session) {
-      return res.status(400).set(corsHeaders).json({ 
-        error: signInError?.message || "Account created but failed to sign in" 
+      return res.status(400).set(corsHeaders).json({
+        error: signInError?.message || "Account created but failed to sign in"
       });
     }
 
@@ -122,7 +122,7 @@ export const signIn = async (req: AuthRequest, res: Response) => {
 export const signOut = async (req: AuthRequest, res: Response) => {
   try {
     const authHeader = req.headers.authorization;
-    
+
     if (authHeader?.startsWith("Bearer ")) {
       const token = authHeader.replace("Bearer ", "");
       // Sign out using the token
@@ -146,7 +146,7 @@ export const getSession = async (req: AuthRequest, res: Response) => {
     }
 
     const token = authHeader.replace("Bearer ", "");
-    
+
     // Verify token and get user using service role
     const { data: { user }, error } = await supabase.auth.getUser(token);
 
@@ -169,5 +169,53 @@ export const getSession = async (req: AuthRequest, res: Response) => {
   } catch (error) {
     console.error("Get session error:", error);
     return res.status(200).set(corsHeaders).json({ user: null, session: null });
+  }
+};
+
+export const forgotPassword = async (req: AuthRequest, res: Response) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).set(corsHeaders).json({ error: "Email is required" });
+    }
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${process.env.FRONTEND_URL || "http://localhost:8080"}/reset-password`,
+    });
+
+    if (error) {
+      console.error("Forgot password error:", error);
+      return res.status(400).set(corsHeaders).json({ error: error.message });
+    }
+
+    return res.status(200).set(corsHeaders).json({ message: "Password reset link sent to your email" });
+  } catch (error) {
+    console.error("Forgot password error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return res.status(500).set(corsHeaders).json({ error: message });
+  }
+};
+
+export const updatePassword = async (req: AuthRequest, res: Response) => {
+  try {
+    const { password } = req.body;
+
+    if (!password) {
+      return res.status(400).set(corsHeaders).json({ error: "New password is required" });
+    }
+
+    const { error } = await supabase.auth.updateUser({ password });
+
+    if (error) {
+      console.error("Update password error:", error);
+      return res.status(400).set(corsHeaders).json({ error: error.message });
+    }
+
+    return res.status(200).set(corsHeaders).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error("Update password error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return res.status(500).set(corsHeaders).json({ error: message });
   }
 };

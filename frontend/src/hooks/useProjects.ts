@@ -1,13 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
-import { 
-  projectsApi, 
-  commentsApi, 
-  upvotesApi, 
+import {
+  projectsApi,
+  commentsApi,
+  upvotesApi,
   statsApi,
-  type Project, 
-  type Comment 
+  type Project,
+  type Comment
 } from "@/lib/api";
 
 // Re-export types for backward compatibility
@@ -70,12 +70,31 @@ export function useCreateComment() {
   const { user } = useAuth();
 
   return useMutation({
-    mutationFn: async ({ projectId, content }: { projectId: string; content: string }) => {
+    mutationFn: async ({ projectId, content, parentId }: { projectId: string; content: string; parentId?: string }) => {
       if (!user) throw new Error("You must be logged in");
-      return commentsApi.create(projectId, content);
+      return commentsApi.create(projectId, content, parentId);
     },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ["comments", variables.projectId] });
+    },
+  });
+}
+
+export function useDeleteComment() {
+  const queryClient = useQueryClient();
+  const { user } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ commentId }: { commentId: string; projectId: string }) => {
+      if (!user) throw new Error("You must be logged in");
+      return commentsApi.delete(commentId);
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["comments", variables.projectId] });
+      toast.success("Comment deleted");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to delete comment");
     },
   });
 }

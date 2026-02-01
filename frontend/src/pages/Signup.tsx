@@ -12,7 +12,11 @@ import { z } from "zod";
 
 const signupSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters").max(100, "Name too long"),
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Invalid email address").refine((val) => {
+    const allowedDomains = ["gmail.com", "yahoo.com", "icloud.com", "outlook.com", "hotmail.com", "aol.com", "zoho.com", "proton.me", "protonmail.com", "me.com", "yandex.com", "mail.com"];
+    const domain = val.split("@")[1]?.toLowerCase();
+    return allowedDomains.includes(domain);
+  }, "Please use a real ID to create an account (e.g., Gmail, Yahoo, iCloud)"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {

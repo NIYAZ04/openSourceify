@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { listComments, createComment } from "../controllers/comments.controller";
+import { listComments, createComment, deleteComment } from "../controllers/comments.controller";
 import { authMiddleware } from "../middleware/auth";
 
 const router = Router();
@@ -16,11 +16,13 @@ router.get("/", (req, res) => {
   return res.status(400).json({ error: "Invalid action" });
 });
 
-// POST: Create comment (authenticated)
+// POST: Create/Delete comment (authenticated)
 router.post("/", (req, res) => {
   const action = req.query.action as string;
   if (action === "create") {
     return createComment(req as any, res);
+  } else if (action === "delete") {
+    return deleteComment(req as any, res);
   }
   return res.status(400).json({ error: "Invalid action" });
 });

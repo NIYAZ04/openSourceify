@@ -42,6 +42,7 @@ export interface Comment {
     avatar_url: string | null;
   };
   is_maintainer?: boolean;
+  parent_id?: string;
 }
 
 export interface Profile {
@@ -183,7 +184,7 @@ export const commentsApi = {
     return json.data;
   },
 
-  async create(projectId: string, content: string): Promise<Comment> {
+  async create(projectId: string, content: string, parentId?: string): Promise<Comment> {
     const url = new URL(`${API_BASE_URL}/comments`);
     url.searchParams.set("action", "create");
 
@@ -197,12 +198,34 @@ export const commentsApi = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify({ projectId, content }),
+      body: JSON.stringify({ projectId, content, parentId }),
     });
 
     const json = await res.json();
     if (!res.ok) throw new Error(json.error || "Failed to create comment");
     return json.data;
+  },
+
+  async delete(id: string): Promise<{ message: string }> {
+    const url = new URL(`${API_BASE_URL}/comments`);
+    url.searchParams.set("action", "delete");
+
+    const token = getAuthToken();
+
+    if (!token) throw new Error("Not authenticated");
+
+    const res = await fetch(url.toString(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || "Failed to delete comment");
+    return json;
   },
 };
 
@@ -344,6 +367,42 @@ export const authApi = {
 
     const json = await res.json();
     if (!res.ok) throw new Error(json.error || "Failed to sign up");
+    return json;
+  },
+
+  async forgotPassword(email: string): Promise<{ message: string }> {
+    const url = new URL(`${API_BASE_URL}/auth/forgot-password`);
+
+    const res = await fetch(url.toString(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || "Failed to send reset link");
+    return json;
+  },
+
+  async resetPassword(password: string): Promise<{ message: string }> {
+    const token = localStorage.getItem("auth_token");
+    if (!token) throw new Error("Not authenticated");
+
+    const url = new URL(`${API_BASE_URL}/auth/reset-password`);
+
+    const res = await fetch(url.toString(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify({ password }),
+    });
+
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || "Failed to reset password");
     return json;
   },
 
