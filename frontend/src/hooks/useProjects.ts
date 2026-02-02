@@ -6,6 +6,7 @@ import {
   commentsApi,
   upvotesApi,
   statsApi,
+  profilesApi,
   type Project,
   type Comment
 } from "@/lib/api";
@@ -132,6 +133,44 @@ export function useUserProjects() {
     queryKey: ["user-projects", user?.id],
     queryFn: () => projectsApi.getUserProjects(),
     enabled: !!user,
+  });
+}
+
+export function useDeleteProject() {
+  const queryClient = useQueryClient();
+  const { user } = useAuth();
+
+  return useMutation({
+    mutationFn: async (projectId: string) => {
+      if (!user) throw new Error("You must be logged in");
+      return projectsApi.delete(projectId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-projects"] });
+      queryClient.invalidateQueries({ queryKey: ["projects"] });
+      toast.success("Project deleted successfully");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to delete project");
+    },
+  });
+}
+
+export function useUpdateProfile() {
+  const queryClient = useQueryClient();
+  const { refreshProfile } = useAuth();
+
+  return useMutation({
+    mutationFn: (data: { full_name?: string; bio?: string; github_username?: string }) =>
+      profilesApi.update(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["profile"] });
+      refreshProfile();
+      toast.success("Profile updated successfully");
+    },
+    onError: (error: Error) => {
+      toast.error(error.message || "Failed to update profile");
+    },
   });
 }
 

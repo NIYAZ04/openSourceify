@@ -4,6 +4,7 @@ import {
   getProject,
   getUserProjects,
   createProject,
+  deleteProject,
 } from "../controllers/projects.controller";
 import { authMiddleware } from "../middleware/auth";
 
@@ -27,13 +28,7 @@ router.get("/", (req, res) => {
   return res.status(400).json({ error: "Invalid action" });
 });
 
-// POST: Create project (authenticated)
-router.post("/", (req, res) => {
-  const action = req.query.action as string;
-  if (action === "create") {
-    return createProject(req as any, res);
-  }
-  return res.status(400).json({ error: "Invalid action" });
-});
+// DELETE: Delete project (authenticated)
+router.delete("/:id", deleteProject);
 
 export default router;

@@ -15,8 +15,8 @@ export const listProjects = async (req: AuthRequest, res: Response) => {
     if (domain && domain !== "all") {
       const validDomains = ['web', 'android', 'machine-learning', 'data-science', 'flutter', 'saas', 'ai'];
       if (!validDomains.includes(domain)) {
-        return res.status(400).set(corsHeaders).json({ 
-          error: `Invalid domain. Must be one of: ${validDomains.join(', ')}, or 'all'` 
+        return res.status(400).set(corsHeaders).json({
+          error: `Invalid domain. Must be one of: ${validDomains.join(', ')}, or 'all'`
         });
       }
     }
@@ -129,8 +129,8 @@ export const createProject = async (req: AuthRequest, res: Response) => {
     // Validate domain enum value
     const validDomains = ['web', 'android', 'machine-learning', 'data-science', 'flutter', 'saas', 'ai'];
     if (!validDomains.includes(body.domain)) {
-      return res.status(400).set(corsHeaders).json({ 
-        error: `Invalid domain. Must be one of: ${validDomains.join(', ')}` 
+      return res.status(400).set(corsHeaders).json({
+        error: `Invalid domain. Must be one of: ${validDomains.join(', ')}`
       });
     }
 
@@ -161,20 +161,63 @@ export const createProject = async (req: AuthRequest, res: Response) => {
         details: error.details,
         hint: error.hint,
       });
-      
+
       // Provide user-friendly error message for enum errors
       if (error.code === '22P02' && error.message.includes('enum')) {
-        return res.status(400).set(corsHeaders).json({ 
-          error: `Invalid domain value. Please ensure the database enum includes all valid domains. Run the migration to add 'ai' if needed.` 
+        return res.status(400).set(corsHeaders).json({
+          error: `Invalid domain value. Please ensure the database enum includes all valid domains. Run the migration to add 'ai' if needed.`
         });
       }
-      
+
       throw error;
     }
 
     console.log(`Project created: ${data.id} by user: ${req.userId}`);
 
     return res.status(200).set(corsHeaders).json({ data });
+  } catch (error) {
+    console.error("Projects edge function error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return res.status(500).set(corsHeaders).json({ error: message });
+  }
+};
+
+export const deleteProject = async (req: AuthRequest, res: Response) => {
+  try {
+    if (!req.userId) {
+      return res.status(401).set(corsHeaders).json({ error: "Unauthorized" });
+    }
+
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).set(corsHeaders).json({ error: "Project ID is required" });
+    }
+
+    // Verify ownership
+    const { data: project, error: fetchError } = await supabase
+      .from("projects")
+      .select("created_by")
+      .eq("id", id)
+      .single();
+
+    if (fetchError || !project) {
+      return res.status(404).set(corsHeaders).json({ error: "Project not found" });
+    }
+
+    if (project.created_by !== req.userId) {
+      return res.status(403).set(corsHeaders).json({ error: "You don't have permission to delete this project" });
+    }
+
+    const { error: deleteError } = await supabase
+      .from("projects")
+      .delete()
+      .eq("id", id);
+
+    if (deleteError) throw deleteError;
+
+    console.log(`Project deleted: ${id} by user: ${req.userId}`);
+
+    return res.status(204).set(corsHeaders).send();
   } catch (error) {
     console.error("Projects edge function error:", error);
     const message = error instanceof Error ? error.message : "Unknown error";
