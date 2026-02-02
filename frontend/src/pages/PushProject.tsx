@@ -45,7 +45,7 @@ const commonLanguages = [
 ];
 
 const projectSchema = z.object({
-  projectName: z.string().min(3, "Project name must be at least 3 characters").max(100, "Project name too long"),
+  projectName: z.string().min(3, "Project name must be at least 3 characters").max(25, "Project name cannot exceed 25 characters"),
   githubLink: z.string().url("Please enter a valid URL"),
   domain: z.string().min(1, "Please select a domain"),
   languages: z.array(z.string()).min(1, "Select at least one language/technology"),
@@ -170,6 +170,7 @@ export default function PushProject() {
                 placeholder="My Awesome Project"
                 value={formData.projectName}
                 onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
+                maxLength={25}
               />
               {errors.projectName && (
                 <p className="text-sm text-destructive">{errors.projectName}</p>

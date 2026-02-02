@@ -5,6 +5,7 @@ import { Mail, Calendar, Github, LogOut, Folder, ArrowUp, Edit2, Save, X } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AvatarInitials } from "@/components/ui/avatar-initials";
@@ -15,6 +16,7 @@ import { profilesApi } from "@/lib/api";
 import { checkBackendHealth } from "@/lib/backend";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export default function Profile() {
   const { user, profile, loading, signOut, refreshProfile } = useAuth();
@@ -106,8 +108,8 @@ export default function Profile() {
           <div className="glass-card rounded-2xl p-8 mb-8">
             <div className="flex flex-col md:flex-row gap-6 items-start">
               {/* Avatar */}
-              <AvatarInitials 
-                name={profile?.full_name || user.email?.split("@")[0] || "User"} 
+              <AvatarInitials
+                name={profile?.full_name || user.email?.split("@")[0] || "User"}
                 className="w-24 h-24 text-3xl"
               />
 
@@ -115,22 +117,42 @@ export default function Profile() {
               <div className="flex-1">
                 {isEditing ? (
                   <div className="space-y-4">
-                    <Input
-                      placeholder="Full Name"
-                      value={editForm.full_name}
-                      onChange={(e) => setEditForm({ ...editForm, full_name: e.target.value })}
-                    />
-                    <Textarea
-                      placeholder="Bio (optional)"
-                      value={editForm.bio}
-                      onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
-                      rows={3}
-                    />
-                    <Input
-                      placeholder="GitHub Username (optional)"
-                      value={editForm.github_username}
-                      onChange={(e) => setEditForm({ ...editForm, github_username: e.target.value })}
-                    />
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-center px-1">
+                        <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Full Name</Label>
+                        <span className="text-[10px] font-bold text-muted-foreground">{editForm.full_name.length}/15</span>
+                      </div>
+                      <Input
+                        placeholder="Full Name"
+                        value={editForm.full_name}
+                        onChange={(e) => setEditForm({ ...editForm, full_name: e.target.value })}
+                        maxLength={15}
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-center px-1">
+                        <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Bio</Label>
+                        <span className={cn("text-[10px] font-bold", editForm.bio.length >= 100 ? "text-destructive" : "text-muted-foreground")}>
+                          {editForm.bio.length}/100
+                        </span>
+                      </div>
+                      <Textarea
+                        placeholder="Tell us about yourself..."
+                        value={editForm.bio}
+                        onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
+                        rows={3}
+                        maxLength={100}
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground px-1">GitHub Username</Label>
+                      <Input
+                        placeholder="username"
+                        value={editForm.github_username}
+                        onChange={(e) => setEditForm({ ...editForm, github_username: e.target.value })}
+                        maxLength={39}
+                      />
+                    </div>
                     <div className="flex gap-2">
                       <Button onClick={handleSaveProfile} size="sm" disabled={isSaving}>
                         <Save className="w-4 h-4 mr-2" />
@@ -145,7 +167,7 @@ export default function Profile() {
                 ) : (
                   <>
                     <div className="flex items-center gap-3 mb-2">
-                      <h1 className="text-2xl font-bold">
+                      <h1 className="text-2xl font-bold truncate max-w-[200px] md:max-w-[400px]">
                         {profile?.full_name || user.email?.split("@")[0] || "User"}
                       </h1>
                       {profile && (

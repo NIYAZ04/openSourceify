@@ -69,9 +69,9 @@ export default function Navbar() {
             {user ? (
               <>
                 <Button variant="ghost" size="sm" asChild>
-                  <Link to="/profile" className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    {profile?.full_name || "Profile"}
+                  <Link to="/profile" className="flex items-center gap-2 max-w-[150px]">
+                    <User className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{profile?.full_name || "Profile"}</span>
                   </Link>
                 </Button>
                 <Button variant="hero" size="sm" asChild>

@@ -26,21 +26,16 @@ export default function ResetPassword() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const { resetPassword, user } = useAuth();
+    const { resetPassword, user, loading } = useAuth();
     const navigate = useNavigate();
 
-    // If user is not authenticated (from the link), we might want to redirect
-    // or show an error. Supabase auto-auths from the link callback.
     useEffect(() => {
-        // Small delay to let AuthContext initialize if it's coming from an external link
-        const timer = setTimeout(() => {
-            if (!user) {
-                toast.error("Invalid or expired session. Please request a new reset link.");
-                navigate("/forgot-password");
-            }
-        }, 2000);
-        return () => clearTimeout(timer);
-    }, [user, navigate]);
+        // Only redirect if auth initialization is finished and no user is found
+        if (!loading && !user) {
+            toast.error("Invalid or expired session. Please request a new reset link.");
+            navigate("/forgot-password");
+        }
+    }, [user, loading, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -87,7 +82,12 @@ export default function ResetPassword() {
                     </div>
 
                     <div className="glass-card rounded-2xl p-8">
-                        {isSuccess ? (
+                        {loading ? (
+                            <div className="flex flex-col items-center justify-center py-12 space-y-4">
+                                <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                                <p className="text-sm font-medium text-muted-foreground animate-pulse">Verifying reset link...</p>
+                            </div>
+                        ) : isSuccess ? (
                             <div className="text-center py-4">
                                 <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6">
                                     <CheckCircle className="w-8 h-8 text-green-500" />

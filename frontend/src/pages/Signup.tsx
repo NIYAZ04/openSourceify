@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const signupSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters").max(100, "Name too long"),
+  fullName: z.string().min(2, "Name must be at least 2 characters").max(15, "Name cannot exceed 15 characters"),
   email: z.string().email("Invalid email address").refine((val) => {
     const allowedDomains = ["gmail.com", "yahoo.com", "icloud.com", "outlook.com", "hotmail.com", "aol.com", "zoho.com", "proton.me", "protonmail.com", "me.com", "yandex.com", "mail.com"];
     const domain = val.split("@")[1]?.toLowerCase();
@@ -93,6 +93,7 @@ export default function Signup() {
                     onChange={(e) => setFullName(e.target.value)}
                     className="pl-10"
                     disabled={isLoading}
+                    maxLength={15}
                   />
                 </div>
                 {errors.fullName && (

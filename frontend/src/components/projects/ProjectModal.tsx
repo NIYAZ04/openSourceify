@@ -139,7 +139,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           />
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm">
+              <span className="font-semibold text-sm truncate max-w-[120px]">
                 {comment.user?.full_name || "Unknown"}
               </span>
               {comment.is_maintainer && (
@@ -214,9 +214,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   className="w-14 h-14 text-xl shadow-inner bg-primary/10 text-primary"
                 />
                 <div>
-                  <h2 className="text-2xl font-black tracking-tight">{project.project_name}</h2>
+                  <h2 className="text-2xl font-black tracking-tight truncate max-w-[300px] md:max-w-[450px]">
+                    {project.project_name}
+                  </h2>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground/70">{project.maintainer?.full_name || "Unknown"}</span>
+                    <span className="font-semibold text-foreground/70 truncate max-w-[150px] md:max-w-[250px]">
+                      {project.maintainer?.full_name || "Unknown"}
+                    </span>
                     <Badge className="text-[10px] px-2 py-0.5" variant="default">Maintainer</Badge>
                   </div>
                 </div>
@@ -348,6 +352,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
                 {/* Add Comment Input */}
                 <div className="mt-8 relative">
+                  <div className="flex justify-end mb-1 px-2">
+                    <span className={cn("text-[10px] font-bold px-2 py-0.5 rounded-full transition-colors", newComment.length >= 200 ? "bg-destructive text-destructive-foreground" : "bg-primary/10 text-primary")}>
+                      {newComment.length}/200
+                    </span>
+                  </div>
                   <AnimatePresence>
                     {replyTo && (
                       <motion.div
@@ -385,6 +394,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                           replyTo && "rounded-t-none"
                         )}
                         disabled={!user || createComment.isPending}
+                        maxLength={200}
                       />
                       <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-transform hover:scale-110">
                         <AvatarInitials name={user?.user_metadata?.full_name || "Guest"} className="w-6 h-6 text-[8px] font-black" />

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { profilesApi, authApi, type AuthUser, type AuthSession, type Profile } from "@/lib/api";
 import { checkBackendHealth } from "@/lib/backend";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 interface AuthContextType {
@@ -45,6 +46,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const initializeAuth = async () => {
       setLoading(true);
+
+      // Check if this is a recovery link (password reset)
+      const hash = window.location.hash;
+      const isRecovery = hash && (hash.includes("type=recovery") || hash.includes("access_token="));
+
+      if (isRecovery) {
+        console.log("Recovery link detected, waiting for Supabase to process...");
+        // For recovery links, we wait for onAuthStateChange to fire and handle it.
+        // We set a safety timeout (5 seconds) to prevent infinite loading.
+        const safetyTimeout = setTimeout(() => {
+          setLoading((prevLoading) => {
+            if (prevLoading) {
+              console.warn("Auth initialization timed out after 5s");
+              return false;
+            }
+            return prevLoading;
+          });
+        }, 5000);
+        return () => clearTimeout(safetyTimeout);
+      }
 
       // First check backend availability
       const isBackendAvailable = await checkBackendHealth();
@@ -97,6 +118,50 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     initializeAuth();
+
+    // Listen for auth state changes (crucial for recovery links)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("Auth state change event:", event);
+
+      if (session) {
+        const authUser: AuthUser = {
+          id: session.user.id,
+          email: session.user.email || "",
+          user_metadata: session.user.user_metadata,
+        };
+        const authSession: AuthSession = {
+          access_token: session.access_token,
+          refresh_token: session.refresh_token || "",
+          expires_at: session.expires_at || 0,
+        };
+
+        setUser(authUser);
+        setSession(authSession);
+        localStorage.setItem("auth_token", session.access_token);
+        localStorage.setItem("auth_user", JSON.stringify(authUser));
+
+        if (event === "SIGNED_IN" || event === "USER_UPDATED" || (event as string) === "PASSWORD_RECOVERY") {
+          await fetchProfile(session.user.id);
+        }
+
+        // Ensure loading is set to false once we have a session (especially from recovery)
+        setLoading(false);
+      } else if (event === "SIGNED_OUT") {
+        setUser(null);
+        setSession(null);
+        setProfile(null);
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("auth_user");
+        setLoading(false);
+      } else {
+        // Fallback for other events
+        setLoading(false);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signUp = async (email: string, password: string, fullName: string) => {

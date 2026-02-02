@@ -18,7 +18,7 @@ export default function ProjectCard({ project, index, onSelect }: ProjectCardPro
   const { user } = useAuth();
   const { data: userUpvotes = [] } = useUserUpvotes();
   const toggleUpvote = useToggleUpvote();
-  
+
   const hasUpvoted = userUpvotes.includes(project.id);
 
   const formatDate = (date: string) => {
@@ -55,15 +55,15 @@ export default function ProjectCard({ project, index, onSelect }: ProjectCardPro
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
-            <AvatarInitials 
-              name={project.maintainer?.full_name || "Unknown"} 
+            <AvatarInitials
+              name={project.maintainer?.full_name || "Unknown"}
               className="w-10 h-10 text-sm"
             />
             <div>
               <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                 {project.project_name}
               </h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground truncate max-w-[120px]">
                 by {project.maintainer?.full_name || "Unknown"}
               </p>
             </div>
@@ -98,7 +98,7 @@ export default function ProjectCard({ project, index, onSelect }: ProjectCardPro
         {/* Footer */}
         <div className="flex items-center justify-between pt-4 border-t border-border">
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <button 
+            <button
               onClick={handleUpvote}
               disabled={toggleUpvote.isPending}
               className={cn(
