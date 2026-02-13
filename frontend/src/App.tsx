@@ -1,51 +1,61 @@
-// @ts-nocheck
-import Navbar from './pages/navbar/navbar';
-import './App.css'
-import Contactus from './pages/contactus/contactus';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import Home from './pages/home/home';
-import Learning from './pages/learning/learning';
-import Projects from './pages/projects/projects';
-import Login from './pages/registerAndLogin/Login'
-import Footer from './pages/footer/footer'
-import Register from './pages/registerAndLogin/register'
-import VerifyEmail from './pages/registerAndLogin/VerifyEmail'
-import ForgotPassword from './pages/registerAndLogin/ForgotPassword'
-import ResetPassword from './pages/registerAndLogin/ResetPassword'
-import AppContainer from './components/AppContainer'
-import Settings from './pages/registerAndLogin/Setting'
-import Profile from './pages/userProfile/Profile'
-import { setNavigate } from './lib/navigation';
-function App(){
-  const navigate=useNavigate();
-  setNavigate(navigate)
-  return (
-   <>
-      <Navbar />
-      <div className="mainItemStartsFromHere">
-        <Routes>
-          <Route path="/" element={<Home />} /> 
-          <Route path="/projects" element={<Projects/>} />
-          <Route path="/learn" element={<Learning />} />
-          <Route path="/about" element={<Contactus />} />
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/components/theme-provider";
+import Index from "./pages/Index";
+import Projects from "./pages/Projects";
+import Learn from "./pages/Learn";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import PushProject from "./pages/PushProject";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import NotFound from "./pages/NotFound";
 
-          {/*  */}
-          <Route path="/login" element={<Login/>}/>
-          <Route path ="/register" element={<Register/> }  />
-          <Route path ="/email/verify/:code" element={<VerifyEmail/> }  />
-          <Route path ="/password/forgot" element={<ForgotPassword/> }  />
-          <Route path ="/password/reset" element={<ResetPassword/> }  />
-          <Route element={<AppContainer />}>
-         
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile />} />
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-          </Route>
-        </Routes>
-      
-      </div>
-     <Footer/>
-     </>
-  );
-}
-export default App
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/courses" element={<Learn />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/push" element={<PushProject />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
+);
+
+export default App;

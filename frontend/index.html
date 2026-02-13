@@ -1,14 +1,59 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/bbimage.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>openSourceify</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenSourceify</title>
+  <meta name="description"
+    content="The community-driven platform where developers discover, publish, and collaborate on open-source projects." />
+  <meta name="author" content="OpenSourceify" />
+  <link rel="icon" type="image/png" href="/open.png" />
+
+  <meta name="keywords"
+    content="open source, developer community, project discovery, collaboration, coding courses, git tutorials, kubernetes guide" />
+  <link rel="canonical" href="https://opensourceify.in/" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OpenSourceify",
+      "url": "https://opensourceify.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://opensourceify.in/projects?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OpenSourceify",
+      "url": "https://opensourceify.in/",
+      "logo": "https://opensourceify.in/open.png",
+      "sameAs": [
+        "https://github.com/NIYAZ04/openSourceify"
+      ]
+    }
+  </script>
+
+  <meta property="og:title" content="OpenSourceify" />
+  <meta property="og:description" content="Discover, publish, and collaborate on open-source projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/open.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@OpenSourceify" />
+  <meta name="twitter:image" content="/open.png" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
