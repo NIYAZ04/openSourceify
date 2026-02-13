@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { supabase } from "../config/supabase";
+import { supabase } from "../config/supabase.js";
 
 export interface AuthRequest extends Request {
   userId?: string | null;
@@ -18,7 +18,7 @@ export const authMiddleware = async (
       const token = authHeader.replace("Bearer ", "");
       // Use getUser to verify token and get user ID
       const { data: { user }, error } = await supabase.auth.getUser(token);
-      if (!error && user){
+      if (!error && user) {
         userId = user.id;
       }
     }

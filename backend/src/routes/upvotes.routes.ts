@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getUserUpvotes, toggleUpvote } from "../controllers/upvotes.controller";
-import { authMiddleware } from "../middleware/auth";
+import { getUserUpvotes, toggleUpvote } from "../controllers/upvotes.controller.js";
+import { authMiddleware } from "../middleware/auth.js";
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { supabase } from "../config/supabase";
-import { AuthRequest } from "../middleware/auth";
+import { supabase } from "../config/supabase.js";
+import { AuthRequest } from "../middleware/auth.js";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",

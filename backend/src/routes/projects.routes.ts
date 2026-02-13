@@ -5,8 +5,8 @@ import {
   getUserProjects,
   createProject,
   deleteProject,
-} from "../controllers/projects.controller";
-import { authMiddleware } from "../middleware/auth";
+} from "../controllers/projects.controller.js";
+import { authMiddleware } from "../middleware/auth.js";
 
 const router = Router();
 

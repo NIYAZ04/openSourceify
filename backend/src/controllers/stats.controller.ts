@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { supabase } from "../config/supabase";
+import { supabase } from "../config/supabase.js";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",

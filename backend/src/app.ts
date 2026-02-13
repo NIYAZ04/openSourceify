@@ -1,11 +1,11 @@
 import express from "express";
-import { corsMiddleware } from "./middleware/cors";
-import authRoutes from "./routes/auth.routes";
-import profilesRoutes from "./routes/profiles.routes";
-import projectsRoutes from "./routes/projects.routes";
-import commentsRoutes from "./routes/comments.routes";
-import upvotesRoutes from "./routes/upvotes.routes";
-import statsRoutes from "./routes/stats.routes";
+import { corsMiddleware } from "./middleware/cors.js";
+import authRoutes from "./routes/auth.routes.js";
+import profilesRoutes from "./routes/profiles.routes.js";
+import projectsRoutes from "./routes/projects.routes.js";
+import commentsRoutes from "./routes/comments.routes.js";
+import upvotesRoutes from "./routes/upvotes.routes.js";
+import statsRoutes from "./routes/stats.routes.js";
 
 const app = express();
 
