@@ -255,7 +255,7 @@ export default function Profile() {
               ) : (
                 <div className="space-y-3">
                   {userProjects && userProjects.length > 0 ? (
-                    userProjects.map((project: any) => (
+                    userProjects.map((project: Project) => (
                       <ProjectRow
                         key={project.id}
                         project={project}
@@ -302,7 +302,7 @@ export default function Profile() {
 }
 
 interface ProjectRowProps {
-  project: any;
+  project: Project;
   onDelete?: (id: string) => void;
 }
 function ProjectRow({ project, onDelete }: ProjectRowProps) {
